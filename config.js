@@ -23,5 +23,13 @@ export const config = {
         record: "鲁ICP备19005654号",
     },
     // 网络请求
-    network: {}
+    network: {},
+    // 文章配置
+    content: {
+        // 摘要配置
+        abstract: {
+            auto: true,
+            length: 300
+        }
+    }
 };

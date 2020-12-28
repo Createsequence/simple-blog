@@ -1,0 +1,84 @@
+/* 全局变量 */
+:root {
+    /* 主题颜色 */
+    --my-white: #ffffff; /*白色*/
+    --my-gary: #e8e8e8; /*灰色*/
+    --my-blue: #348cf0; /*蓝色*/
+    --my-red: #ff4d00; /*红色*/
+    --my-cyan: #59606e; /*青色*/
+}
+
+/*根据屏幕调整字体大小*/
+@media screen and (max-width: 480px) {
+    :root {
+        --h1: 2.9em;
+        --h2: 1.5em;
+        --h3: 1.2em;
+        --h4: 1.1em;
+        --h5: 0.85em;
+
+        --img-maxWidth: 100%;
+    }
+}
+@media screen and (min-width: 481px ){
+    :root {
+        --h1: 2.9em;
+        --h2: 1.8em;
+        --h3: 1.5em;
+        --h4: 1.1em;
+        --h5: 0.95em;
+
+        --img-maxWidth: 100%;
+    }
+}
+
+/* 全局字体样式 */
+body {
+    font-family: "mono", serif;
+    color: var(--my-cyan);
+    background-color: var(--my-white);
+    font-size: var(--h5);
+    a {
+        color: var(--my-cyan);
+    }
+    a:hover {
+        color: var(--my-blue);
+        font-weight: normal;
+    }
+    p {
+        line-height: 2em;
+        letter-spacing: 0.01em;
+    }
+}
+
+/* 组件通用样式 */
+@menu-height: 65px; /*顶部栏高度*/
+.content {
+    padding-top: @menu-height;
+    background-color: var(--my-white);
+
+    // 文章详情
+    .posts {
+        .divider {
+            color: red;
+        }
+        .post {
+            .post-title {
+                text-align: center;
+                font-size: var(--h2);
+                padding-bottom: 25px;
+            }
+            .post-content {
+                padding-bottom: 25px;
+            }
+            .post-info {
+                font-size: var(--h5);
+            }
+        }
+    }
+}
+
+/* 组件重写样式 */
+.ant-menu-horizontal {
+    border-bottom: none;
+}

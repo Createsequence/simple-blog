@@ -5,11 +5,11 @@ import router from './router'
 Vue.config.productionTip = false;
 
 // 引入主css
-import './assets/css/main.css';
-import './assets/css/index.css';
+import './assets/css/main.less';
+import './assets/css/index.less';
 
 // 引入ant
-import { Button, Layout, Input, Row, Col, Menu, Card } from 'ant-design-vue'
+import { Button, Layout, Input, Row, Col, Menu, Card, Divider, Pagination, BackTop, Anchor } from 'ant-design-vue'
 Vue.component(Button.name, Button);
 Vue.component(Layout.name, Layout);
 Vue.component(Layout.Content.name, Layout.Content);
@@ -25,19 +25,20 @@ Vue.component(Menu.ItemGroup.name, Menu.ItemGroup);
 Vue.component(Menu.Item.name, Menu.Item);
 Vue.component(Card.name, Menu.Item);
 Vue.component(Card.Meta.name, Card.Meta);
+Vue.component(Divider.name, Divider);
+Vue.component(Pagination.name, Pagination);
+Vue.component(BackTop.name, BackTop);
+Vue.component(Anchor.name, Anchor);
+Vue.component(Anchor.Link.name, Anchor.Link);
 
 // 引入less
 import less from 'less'
 Vue.use(less);
 
-//引入代码高亮
-import 'highlight.js/styles/darcula.css'; //引入代码高亮的css
-import highlight from 'highlight.js';
-//自定义highlightCode方法，将只执行一次的逻辑去掉
-highlight.highlightCode = function () {
-  let blocks = document.querySelectorAll('pre code');
-  [].forEach.call(blocks, highlight.highlightBlock);
-};
+//引入代码高亮(默认高亮所有code，需要修改index.js中选择器为pre code)
+import 'highlight.js/styles/darcula.css';
+import VueHighlightJS from 'vue-highlightjs'
+Vue.use(VueHighlightJS);
 
 new Vue({
   router,

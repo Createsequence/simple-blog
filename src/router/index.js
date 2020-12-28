@@ -7,8 +7,7 @@ const Home = () => import('../views/Home.vue');
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: '/home'
   },
   {
     path: '/home',
@@ -17,11 +16,25 @@ const routes = [
     children: [
       {
         path: '/',
-        component: () => import('../views/Content.vue')
+        redirect: '/home/content'
       },
       {
-        path: '/content',
-        component: () => import('../views/Content.vue')
+        path: '/home/content',
+        component: () => import('../views/Content.vue'),
+        children: [
+          {
+            path: '/',
+            redirect: '/home/content/articleList'
+          },
+          {
+            path: '/home/content/articleList',
+            component: () => import('../views/ArticleList.vue')
+          },
+          {
+            path: '/home/content/article',
+            component: () => import('../views/Article.vue')
+          }
+        ]
       }
     ]
   }

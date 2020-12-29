@@ -30,7 +30,7 @@
             </a-layout>
 
             <!--底部栏-->
-            <a-layout-footer class="copyright">
+            <a-layout-footer id="foot" class="foot">
                 Copyright © {{config.copyright.time}} <a
                     :href="config.copyright.url">{{config.copyright.record}}</a><br/>
                 <a :href="config.theme.url">Themes</a>
@@ -88,7 +88,7 @@
         }
     }
 
-    .copyright {
+    .foot {
         text-align: center;
         font-size: var(--h5);
         background-color: var(--my-white);

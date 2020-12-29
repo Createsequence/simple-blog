@@ -55,7 +55,6 @@
         border-right: 1px var(--my-gary) solid;
         text-align: center;
         overflow:auto;
-        padding-bottom: 10px;
     }
 
     #portamento_container {

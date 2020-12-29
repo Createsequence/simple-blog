@@ -43,17 +43,18 @@ export const getCatalog = () => {
 /**
  * 设置固定位置的浮动侧边栏，只能使用在Details页面与Content页面里
  */
-export const generateCatalog = () => {
+export let generateCatalog = () => {
     // 默认返回顶部
     $(window).scrollTop(0);
 
     let content = $('.content');
     let sideRight = $('.side-right');
     let sideLeft = $('.side-left');
-    // 设置计算位置
+    // 计算位置
     let width = ($(content).width() - $(sideRight).width()) / 2;
     let height = $(window).height() - (64 * 2);
-    $(sideLeft).css({'width': width, 'height': height});
+    let footerHeight = $('#foot').innerHeight();
+    $(sideLeft).css({'width': width, 'height': height - footerHeight, 'margin-top': -footerHeight});
     let gap = $(window).height() - $(sideLeft).height();
 
     // 设置浮动

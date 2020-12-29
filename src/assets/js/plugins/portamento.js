@@ -193,21 +193,22 @@
 		thisWindow.bind("scroll.portamento", function () {
 			
 			if(thisWindow.height() > panel.outerHeight() && thisWindow.width() >= (thisDocument.width() - ieFix)) { // don't scroll if the window isn't big enough
-				
+
 				var y = thisDocument.scrollTop(); // current scroll position of the document
 												
 				if (y >= (topScrollBoundary)) { // if we're at or past the upper scrolling boundary
 					if((panel.innerHeight() - wrapper.viewportOffset().top) - wrapperPaddingFix + gap >= wrapper.height()) { // if we're at or past the bottom scrolling boundary
 						if(panel.hasClass('fixed') || thisWindow.height() >= panel.outerHeight()) { // check that there's work to do
-							panel.removeClass('fixed');
-							panel.css('top', (wrapper.height() - panel.innerHeight()) + 'px');
+							// There's nothing to do. just stop here By Createsequence
+							// panel.removeClass('fixed');
+							// panel.css('top', (wrapper.height() - panel.innerHeight()) + 'px');
 						}
 					} else { // if we're somewhere in the middle
 						panel.addClass('fixed');
 						
 						if(fullyCapableBrowser) { // supports position:fixed
 							panel.css('top', gap + 'px'); // to keep the gap
-						} else {							
+						} else {
 							panel.clearQueue();
 							panel.css('position', 'absolute').animate({top: (0 - float_container.viewportOffset().top + gap)});
 						}
@@ -224,7 +225,7 @@
 		
 		// ---------------------------------------------------------------------------------------------------
 		
-		thisWindow.bind("resize.portamento", function () {						
+		thisWindow.bind("resize.portamento", function () {
 			// stop users getting undesirable behaviour if they resize the window too small
 			if(thisWindow.height() <= panel.outerHeight() || thisWindow.width() < thisDocument.width()) {			
 				if(panel.hasClass('fixed')) {

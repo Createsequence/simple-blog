@@ -56,6 +56,15 @@
             text-align: center;
             font-weight: bold;
         }
+        a {
+            display:block;
+            padding: 1px 5px;
+        }
+        a:hover {
+            background-color: var(--my-cyan);
+            color: var(--my-white);
+            border-radius: 2px;
+        }
         .h2 {
             padding-left: 20px;
         }

@@ -5,13 +5,13 @@
             <!--左侧栏-->
             <a-col :xs="{ span: 0 }" :sm="{ span: 5, offset: 1 }">
                 <a-row id="side-left" class="side-left">
-                    <personal-info/>
+                    <Catalog/>
                 </a-row>
             </a-col>
 
             <!--右侧栏-->
             <a-col :xs="{ span: 20, offset: 2 }" :sm="{ span: 14, offset: 1 }" id="side-right" class="side-right">
-                <ArticleList/>
+                <Article/>
             </a-col>
 
         </a-row>
@@ -19,9 +19,8 @@
 </template>
 
 <script>
-    import {config} from "../../config";
-    import ArticleList from "../components/ArticleList";
-    import PersonalInfo from "../components/PersonalInfo";
+    import Article from "../components/Article";
+    import Catalog from "../components/Catalog";
 
     // 引入jquery
     import $ from 'jquery'
@@ -30,15 +29,15 @@
     import {generateCatalog} from "../assets/js/utils";
 
     export default {
-        name: "Content",
-        data() {
-            return {
-                config: config
-            }
-        },
+        name: "Details",
         components: {
-            ArticleList,
-            PersonalInfo
+            Article,
+            Catalog
+        },
+        data() {
+          return {
+              titles: []
+          }
         },
         mounted() {
             this.$nextTick(function () {
@@ -55,11 +54,10 @@
     .side-left {
         border-right: 1px var(--my-gary) solid;
         text-align: center;
-        position: absolute;
-        img {
-            width: 50%;
-        }
+        overflow:auto;
+        padding-bottom: 10px;
     }
+
     #portamento_container {
         .side-left {
             position: fixed;

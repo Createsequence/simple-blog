@@ -19,7 +19,7 @@ export const config = {
     // 版权与备案信息
     copyright: {
         time: "2019",
-        url: "http://www.beian.miit.gov.cn/",
+        url: "http://beian.miit.gov.cn/",
         record: "鲁ICP备19005654号",
     },
     // 网络请求

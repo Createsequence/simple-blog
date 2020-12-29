@@ -1,12 +1,13 @@
+const webpack = require('webpack');
+
 module.exports = {
-    configureWebpack: (config) => {
-        //添加textloader以读取md文件
-        config.module.rules.push({
+    configureWebpack: {
+        rules: {
             test: /\.md$/,
             use: [{
                 loader: 'text-loader'
             }]
-        })
+        }
     },
     css: {
         loaderOptions: {

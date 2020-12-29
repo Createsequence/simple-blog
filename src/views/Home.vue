@@ -3,7 +3,7 @@
         <a-layout>
 
             <!--顶部菜单-->
-            <a-layout-header class="head" :style="{zIndex: 1}">
+            <a-layout-header id="head" class="head" :style="{zIndex: 1}">
                 <a-row>
                     <!--标题-->
                     <a-col :xs="{ span: 0 }" :sm="{ span: 3, offset: 2 }">
@@ -14,7 +14,7 @@
                     <!--菜单-->
                     <a-col :xs="{ span: 24 }" :sm="{ span: 9, offset: 10 }">
                         <a-menu mode="horizontal" class="menu">
-                            <a-menu-item key="1" class="menuItem">文章</a-menu-item>
+                            <a-menu-item key="1" class="menuItem" @click="link('content')">文章</a-menu-item>
                             <a-menu-item key="2" class="menuItem">分类</a-menu-item>
                             <a-menu-item key="3" class="menuItem">归档</a-menu-item>
                             <a-menu-item key="4" class="menuItem">搜索</a-menu-item>
@@ -41,7 +41,7 @@
         <!--返回顶部-->
         <a-row>
             <a-col :xs="{ span: 0 }" :md="{ span: 24 }">
-                <a-back-top />
+                <a-back-top id="back-top"/>
             </a-col>
         </a-row>
     </div>
@@ -57,6 +57,13 @@
             return {
                 config: config
             }
+        },
+        methods: {
+            link: function(path) {
+                this.$router.push({
+                    path: '/home/' + path,
+                })
+            }
         }
     }
 </script>
@@ -67,7 +74,6 @@
         background-color: var(--my-white);
         width: 100%;
         position: fixed;
-
         .logo {
             float: left;
             font-size: var(--h2);

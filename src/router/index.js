@@ -2,6 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
+// 解决原地TP报错问题
+const VueRouterPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(to) {
+  return VueRouterPush.call(this, to).catch(err => err)
+};
+
 const Home = () => import('../views/Home.vue');
 
 const routes = [
@@ -20,21 +26,11 @@ const routes = [
       },
       {
         path: '/home/content',
-        component: () => import('../views/Content.vue'),
-        children: [
-          {
-            path: '/',
-            redirect: '/home/content/articleList'
-          },
-          {
-            path: '/home/content/articleList',
-            component: () => import('../views/ArticleList.vue')
-          },
-          {
-            path: '/home/content/article',
-            component: () => import('../views/Article.vue')
-          }
-        ]
+        component: () => import('../views/Content.vue')
+      },
+      {
+        path: '/home/details',
+        component: () => import('../views/Details')
       }
     ]
   }

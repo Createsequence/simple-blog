@@ -13,9 +13,9 @@
                     </a-col>
                     <!--菜单-->
                     <a-col :xs="{ span: 24 }" :sm="{ span: 9, offset: 10 }">
-                        <a-menu mode="horizontal" class="menu">
+                        <a-menu mode="horizontal" class="menu" :defaultSelectedKeys="['1']">
                             <a-menu-item key="1" class="menuItem" @click="link('content')">文章</a-menu-item>
-                            <a-menu-item key="2" class="menuItem">分类</a-menu-item>
+                            <a-menu-item key="2" class="menuItem" @click="link('classification')">分类</a-menu-item>
                             <a-menu-item key="3" class="menuItem">归档</a-menu-item>
                             <a-menu-item key="4" class="menuItem">搜索</a-menu-item>
                             <a-menu-item key="5" class="menuItem">关于</a-menu-item>
@@ -31,10 +31,14 @@
 
             <!--底部栏-->
             <a-layout-footer id="foot" class="foot">
-                Copyright © {{config.copyright.time}} <a
-                    :href="config.copyright.url">{{config.copyright.record}}</a><br/>
-                <a :href="config.theme.url">Themes</a>
-                By {{config.theme.author}}
+                <a-row>
+                    <a-col :xs="{ span: 24 }" :sm="{ span: 9, offset: 9 }">
+                        Copyright © {{config.copyright.time}} <a
+                            :href="config.copyright.url">{{config.copyright.record}}</a><br/>
+                        <a :href="config.theme.url">Themes</a>
+                        By {{config.theme.author}}
+                    </a-col>
+                </a-row>
             </a-layout-footer>
         </a-layout>
 
@@ -83,15 +87,16 @@
 
         .menu {
             background-color: var(--my-white);
-            line-height: var(--menu-height);
             font-size: var(--h4);
+            line-height: var(--menu-height);
         }
     }
 
     .foot {
         text-align: center;
-        font-size: var(--h5);
+        line-height: var(--h5-lh);
         background-color: var(--my-white);
         border: 1px;
+        padding-top: 5%;
     }
 </style>

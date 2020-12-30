@@ -1,68 +1,38 @@
 <template>
-    <a-layout-content id="content" class="content">
-        <a-row>
-
-            <!--左侧栏-->
-            <a-col :xs="{ span: 0 }" :sm="{ span: 5, offset: 1 }">
-                <a-row id="side-left" class="side-left">
-                    <personal-info/>
-                </a-row>
-            </a-col>
-
-            <!--右侧栏-->
-            <a-col :xs="{ span: 20, offset: 2 }" :sm="{ span: 14, offset: 1 }" id="side-right" class="side-right">
-                <ArticleList/>
-            </a-col>
-
-        </a-row>
-    </a-layout-content>
+    <div id="content" class="content">
+        <blog-content>
+            <personal-info slot="left" :data="info"/>
+            <article-list slot="right"
+                          :data="posts"
+                          :abstract-config="abstractConfig"/>
+        </blog-content>
+    </div>
 </template>
 
 <script>
     import {config} from "../../config";
+    import {posts} from "../assets/js/FillData";
+
+    import BlogContent from "../components/base/BlogContent";
     import ArticleList from "../components/ArticleList";
     import PersonalInfo from "../components/PersonalInfo";
 
-    // 引入jquery
-    import $ from 'jquery'
-    window.jQuery = $;
-    require('../assets/js/plugins/portamento.js');
-    import {generateCatalog} from "../assets/js/utils";
-
     export default {
         name: "Content",
-        data() {
-            return {
-                config: config
-            }
-        },
         components: {
+            BlogContent,
             ArticleList,
             PersonalInfo
         },
-        mounted() {
-            this.$nextTick(function () {
-                generateCatalog();
-            })
-        },
-        updated() {
-            generateCatalog();
+        data() {
+            return {
+                info: config.info,
+                abstractConfig: config.content.abstract,
+                posts: posts()
+            }
         }
     }
 </script>
 
-<style lang="less">
-    .side-left {
-        border-right: 1px var(--my-gary) solid;
-        text-align: center;
-        position: absolute;
-        img {
-            width: 50%;
-        }
-    }
-    #portamento_container {
-        .side-left {
-            position: fixed;
-        }
-    }
+<style scoped>
 </style>

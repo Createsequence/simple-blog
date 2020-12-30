@@ -3,13 +3,13 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter);
 
 // 解决原地TP报错问题
-const VueRouterPush = VueRouter.prototype.push
+const VueRouterPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(to) {
   return VueRouterPush.call(this, to).catch(err => err)
 };
 
 const Home = () => import('../views/Home.vue');
-
+import Classification from "../views/Classification";
 const routes = [
   {
     path: '/',
@@ -31,6 +31,10 @@ const routes = [
       {
         path: '/home/details',
         component: () => import('../views/Details')
+      },
+      {
+        path: '/home/classification',
+        component: () => import('../views/Classification')
       }
     ]
   }

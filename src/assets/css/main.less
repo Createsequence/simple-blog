@@ -6,27 +6,39 @@
     --my-blue: #348cf0; /*蓝色*/
     --my-red: #ff4d00; /*红色*/
     --my-cyan: #59606e; /*青色*/
+
+    --head-height: 65px;
 }
 
 /*根据屏幕调整字体大小*/
 @media screen and (max-width: 480px) {
     :root {
-        --h1: 2.9em;
-        --h2: 1.5em;
-        --h3: 1.2em;
-        --h4: 1.1em;
-        --h5: 0.85em;
+        --h1: 2.4em;
+        --h1-lh: 3.6em;
+        --h2: 2em;
+        --h2-lh: 3em;
+        --h3: 1.6em;
+        --h3-lh: 2.4em;
+        --h4: 1.4em;
+        --h4-lh: 2.2em;
+        --h5: 1.2em;
+        --h5-lh: 1.8em;
 
         --img-maxWidth: 100%;
     }
 }
 @media screen and (min-width: 481px ){
     :root {
-        --h1: 2.9em;
-        --h2: 1.8em;
-        --h3: 1.3em;
-        --h4: 1.1em;
-        --h5: 0.9em;
+        --h1: 2.4em;
+        --h1-lh: 3.6em;
+        --h2: 2em;
+        --h2-lh: 3em;
+        --h3: 1.6em;
+        --h3-lh: 2.4em;
+        --h4: 1.4em;
+        --h4-lh: 2.2em;
+        --h5: 1.2em;
+        --h5-lh: 1.8em;
 
         --img-maxWidth: 100%;
     }
@@ -34,10 +46,13 @@
 
 /* 全局字体样式 */
 body {
-    font-family: "mono", serif;
+    font-size: 62.5%;
     color: var(--my-cyan);
     background-color: var(--my-white);
-    font-size: var(--h5);
+    #app {
+        font-size: var(--h4);
+        line-height: var(--h4-lh);
+    }
     a {
         color: var(--my-cyan);
     }
@@ -46,15 +61,13 @@ body {
         font-weight: normal;
     }
     p {
-        line-height: 2em;
         letter-spacing: 0.01em;
     }
 }
 
 /* 组件通用样式 */
-@menu-height: 65px; /*顶部栏高度*/
 .content {
-    padding-top: @menu-height;
+    padding-top: var(--head-height);
     background-color: var(--my-white);
     // 文章详情
     .posts {
@@ -64,21 +77,20 @@ body {
         .post {
             .post-title {
                 text-align: center;
-                font-size: var(--h2);
+                font-size: var(--h3);
                 padding-bottom: 25px;
             }
             .post-content {
                 padding-bottom: 25px;
             }
-            .post-info {
-                font-size: var(--h5);
-            }
         }
     }
 }
 .side-left::-webkit-scrollbar {
-    // 左侧边栏不显示滚动条
-    width: 1px;
+    width: 4px;
+}
+.side-left::-webkit-scrollbar-thumb {
+    background: var(--my-cyan);
 }
 
 /* 组件重写样式 */

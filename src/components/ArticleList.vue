@@ -1,54 +1,67 @@
 <template>
+    <!--文章列表组件-->
     <div class="article-list">
-        <!--文章列表-->
+
         <div class="posts">
-            <div class="post" v-for="p in posts">
+            <div class="post" v-for="post in data.data">
                 <div class="post-title">
-                    <a @click="link(p.id)">{{p.title}}</a>
+                    <a @click="link(post.id)">{{post.title}}</a>
                 </div>
                 <div class="post-content">
-                    {{abstract(p.content)}}
+                    {{abstract(post.content)}}
                 </div>
                 <div class="post-info">
-                    阅读({{p.read}}) 评论({{p.comment}}) @ posted by {{p.author}} on {{p.postDate}}
+                    阅读({{post.read}}) 评论({{post.comment}}) @ posted by {{post.author}} on {{post.postDate}}
                 </div>
                 <a-divider dashed/>
             </div>
         </div>
+
         <!--分页-->
         <div class="pagination">
-            <a-pagination show-quick-jumper :default-current="2" :total="500" @change="changePage"/>
+            <a-pagination show-quick-jumper
+                          :total="data.total"
+                          :current="current"
+                          @change="changePage"/>
         </div>
     </div>
 </template>
 
 <script>
-    import {config} from "../../config";
-    import {posts} from "../assets/js/postData";
-
     export default {
         name: "ArticleList",
         props: {
-            posts: {
-                type: Array,
-                default: () => posts
+            data: {
+                type: Object,
+                default: () => {}
+            },
+            abstractConfig: {
+                type: Object,
+                default: () => {
+                    return {
+                        auto: true,
+                        length: 300
+                    }
+                }
             }
         },
         data() {
             return {
-                config: config
+                current: 1,
+                pageSize: 10
             }
         },
         methods: {
             // 截取摘要
             abstract: function(content) {
-                let abstractConfig = this.config.content.abstract;
+                let abstractConfig = this.abstractConfig;
                 content = content.replace(/<.*?>/g, "");
                 return (abstractConfig.auto && content.length > abstractConfig.length) ?
                     content.substring(0, abstractConfig.length) + "......" : content;
             },
             changePage: function(pageNum) {
-                console.log(pageNum);
+                this.current = pageNum;
+                this.pageSize = 10;
             },
             link: function(id) {
                 this.$router.push({

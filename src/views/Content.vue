@@ -1,7 +1,10 @@
 <template>
     <div id="content" class="content">
         <blog-content>
-            <personal-info slot="left" :data="info"/>
+            <div slot="left">
+                <personal-info :data="info"/>
+                <article-search />
+            </div>
             <article-list slot="right"
                           :data="articleList"
                           :abstract-config="abstractConfig"/>
@@ -15,13 +18,15 @@
     import BlogContent from "../components/base/BlogContent";
     import ArticleList from "../components/ArticleList";
     import PersonalInfo from "../components/PersonalInfo";
+    import ArticleSearch from "../components/ArticleSearch";
 
     export default {
         name: "Content",
         components: {
             BlogContent,
             ArticleList,
-            PersonalInfo
+            PersonalInfo,
+            ArticleSearch
         },
         data() {
             return {

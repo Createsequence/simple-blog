@@ -5,6 +5,9 @@
             <div slot="title" class="class-catalog-title">
                 <slot name="title"/>
             </div>
+            <div slot="item" class="class-catalog-item">
+                <slot name="item"/>
+            </div>
         </blog-anchor>
     </div>
 </template>

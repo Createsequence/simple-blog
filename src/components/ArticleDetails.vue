@@ -21,7 +21,7 @@
 
             <div class="post-end">
                 <div class="post-tag">
-                    <span v-for="(tag,index) in data.tags">
+                    <span v-for="tag in data.tags">
                         #<a :href="tag.id">{{tag.name}} </a>
                     </span>
                 </div>
@@ -42,13 +42,8 @@
 </template>
 
 <script>
-    import BlogComment from "./base/BlogComment";
-
     export default {
         name: "ArticleDetails",
-        components: {
-            BlogComment
-        },
         props: {
             data: {
                 type: Object,

@@ -4,18 +4,23 @@
         <div class="anchor-title">
             <slot name="title"></slot>
         </div>
-        <div v-for="t in data">
+        <div @click="selected()">
+            <slot name="item"></slot>
+        </div>
+        <div v-for="(t,i1) in data" class="anchor-items">
             <div>
-                <a @click="click(t[chickProperty])">{{t[showProperty]}}</a>
+                <a :id="i1" @click="click(t[chickProperty]); selected(i1)">{{t[showProperty]}}</a>
             </div>
-            <div class="anchor-item" v-for="t2 in t[childProperty]">
-                <a @click="click(t2[chickProperty])">{{t2[showProperty]}}</a>
+            <div class="anchor-item" v-for="(t2,i2) in t[childProperty]">
+                <a :id="i1 + '_' + i2" @click="click(t2[chickProperty]); selected(i1 + '_' + i2)">{{t2[showProperty]}}</a>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import $ from 'jquery'
+
     export default {
         name: "BlogAnchor",
         props: {
@@ -43,6 +48,15 @@
                 type: Function,
                 default: function (t) {
                     console.log('传入值: ' + t);
+                }
+            }
+        },
+        methods: {
+            // 点击后变色
+            selected(eleId) {
+                $('a').removeClass('selected');
+                if (eleId || eleId === 0) {
+                    $('#' + eleId).addClass('selected');
                 }
             }
         }
@@ -74,5 +88,11 @@
         .anchor-item {
             padding-left: 20px;
         }
+    }
+
+    .selected {
+        background-color: var(--my-cyan);
+        color: var(--my-white);
+        border-radius: 2px;
     }
 </style>

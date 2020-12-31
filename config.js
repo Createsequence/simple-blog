@@ -30,6 +30,10 @@ export const config = {
         abstract: {
             auto: true,
             length: 300
+        },
+        about: {
+            // 设置为关于的文章ID
+            contentId: 0
         }
     }
 };

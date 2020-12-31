@@ -17,8 +17,7 @@
                             <a-menu-item key="1" class="menuItem" @click="link('content')">文章</a-menu-item>
                             <a-menu-item key="2" class="menuItem" @click="link('categories')">分类</a-menu-item>
                             <a-menu-item key="3" class="menuItem" @click="link('archives')">归档</a-menu-item>
-                            <a-menu-item key="4" class="menuItem" @click="link('search')">搜索</a-menu-item>
-                            <a-menu-item key="5" class="menuItem">关于</a-menu-item>
+                            <a-menu-item key="4" class="menuItem" @click="linkToAbout()">关于</a-menu-item>
                         </a-menu>
                     </a-col>
                 </a-row>
@@ -53,6 +52,7 @@
 
 <script>
     import {config} from "../../config";
+    import {linkToArticle} from "../assets/js/utils";
 
     export default {
         name: 'Home',
@@ -63,10 +63,13 @@
             }
         },
         methods: {
-            link: function(path) {
+            link(path) {
                 this.$router.push({
                     path: '/home/' + path,
                 })
+            },
+            linkToAbout() {
+                linkToArticle(this, config.content.about.contentId);
             }
         }
     }

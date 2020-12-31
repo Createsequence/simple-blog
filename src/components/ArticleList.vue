@@ -1,5 +1,5 @@
 <template>
-    <!--文章列表组件-->
+    <!--带文章摘要的文章列表组件-->
     <div class="article-list">
 
         <div class="posts">
@@ -28,6 +28,8 @@
 </template>
 
 <script>
+    import {linkToArticle} from "../assets/js/utils";
+
     export default {
         name: "ArticleList",
         props: {
@@ -64,10 +66,7 @@
                 this.pageSize = 10;
             },
             link: function(id) {
-                this.$router.push({
-                    path: '/home/details',
-                    query: {id: id}
-                })
+                linkToArticle(this, id);
             }
         }
     }

@@ -71,16 +71,12 @@ export let generateFixedWindow = () => {
     });
 };
 
-
 /**
- * 设置固定位置的浮动窗口
+ * 路由跳转到文章详情页面
  */
-export let generateTargetFixedWindow = (targetId) => {
-    let target = $('#' + targetId);
-    let offset = $(target).offset().top;
-
-    $(target).portamento({
-        gap: offset,
-        wrapper: $('#app')
-    });
+export let linkToArticle = (that, id) => {
+    that.$router.push({
+        path: '/home/details',
+        query: {id: id}
+    })
 };

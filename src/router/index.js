@@ -9,7 +9,6 @@ VueRouter.prototype.push = function push(to) {
 };
 
 const Home = () => import('../views/Home.vue');
-import Classification from "../views/Categories";
 const routes = [
   {
     path: '/',
@@ -39,12 +38,18 @@ const routes = [
       {
         path: '/home/archives',
         component: () => import('../views/Archives')
-      },
-      {
-        path: '/home/search',
-        component: () => import('../views/Search')
       }
     ]
+  },
+  {
+    path: '/login',
+    name: 'AdminLogin',
+    component: () => import('../views/admin/AdminLogin')
+  },
+  {
+    path:'/admin',
+    name: 'AdminHome',
+    component: () => import('../views/admin/AdminHome')
   }
 ];
 

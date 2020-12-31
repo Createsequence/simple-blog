@@ -1,65 +1,33 @@
 <template>
-    <a-layout-content id="content" class="content">
-        <a-row>
-
-            <!--左侧栏-->
-            <a-col :xs="{ span: 0 }" :sm="{ span: 5, offset: 1 }">
-                <a-row id="side-left" class="side-left">
-                    <Catalog/>
-                </a-row>
-            </a-col>
-
-            <!--右侧栏-->
-            <a-col :xs="{ span: 20, offset: 2 }" :sm="{ span: 14, offset: 1 }" id="side-right" class="side-right">
-                <Article/>
-            </a-col>
-
-        </a-row>
-    </a-layout-content>
+    <div id="details" class="details">
+        <blog-content>
+            <article-catalog slot="left"/>
+            <article-details slot="right" :data="article"/>
+        </blog-content>
+    </div>
 </template>
 
 <script>
-    import Article from "../components/Article";
-    import Catalog from "../components/Catalog";
+    import {article} from "../assets/js/FillData";
 
-    // 引入jquery
-    import $ from 'jquery'
-    window.jQuery = $;
-    require('../assets/js/plugins/portamento.js');
-    import {generateCatalog} from "../assets/js/utils";
+    import BlogContent from "../components/base/BlogContent";
+    import ArticleDetails from "../components/ArticleDetails";
+    import ArticleCatalog from "../components/ArticleCatalog";
 
     export default {
         name: "Details",
         components: {
-            Article,
-            Catalog
+            BlogContent,
+            ArticleDetails,
+            ArticleCatalog
         },
         data() {
-          return {
-              titles: []
-          }
-        },
-        mounted() {
-            this.$nextTick(function () {
-                generateCatalog();
-            })
-        },
-        updated() {
-            generateCatalog();
+            return {
+                article: article
+            }
         }
     }
 </script>
 
-<style lang="less">
-    .side-left {
-        border-right: 1px var(--my-gary) solid;
-        text-align: center;
-        overflow:auto;
-    }
-
-    #portamento_container {
-        .side-left {
-            position: fixed;
-        }
-    }
+<style scoped>
 </style>

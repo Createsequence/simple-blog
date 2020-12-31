@@ -1,32 +1,32 @@
 <template>
+    <!--个人信息组件-->
     <div class="personal-info">
         <div class="img">
             <img src="../assets/img/Createsequence.jpg">
         </div>
         <div class="author">
-            {{config.info.author}}
+            {{data.author}}
         </div>
         <div class="motto">
-            {{config.info.motto}}
+            {{data.motto}}
         </div>
         <div class="social">
-            <a :href="config.info.social.GitHub">GitHub</a>
+            <a :href="data.social.GitHub">GitHub</a>
             <a-divider type="vertical"/>
-            <a :href="config.info.social.Email">Email</a>
+            <a :href="data.social.Email">Email</a>
             <a-divider type="vertical"/>
-            <a :href="config.info.social.Blog">Blog</a>
+            <a :href="data.social.Blog">Blog</a>
         </div>
     </div>
 </template>
 
 <script>
-    import {config} from "../../config";
-
     export default {
         name: "PersonalInfo",
-        data() {
-            return {
-                config: config
+        props: {
+            data: {
+                type: Object,
+                default: () => {}
             }
         }
     }

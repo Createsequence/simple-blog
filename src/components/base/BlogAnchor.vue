@@ -2,7 +2,7 @@
     <!--锚点，允许传入一个格式为{id:'xx',name:'xx',childes:[]}的对象的数组，并且将click事件以参数形式传入-->
     <div class="blog-anchor">
         <div class="anchor-title">
-            <div slot="title"></div>
+            <slot name="title"></slot>
         </div>
         <div v-for="t in data">
             <div>
@@ -55,9 +55,9 @@
         padding: 0 40px;
 
         .anchor-title {
-            font-size: var(--h3);
             text-align: center;
             font-weight: bold;
+            padding-bottom: 10px;
         }
 
         a {

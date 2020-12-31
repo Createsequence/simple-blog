@@ -4,8 +4,8 @@ import art from '../post/《趣谈网络协议》读书笔记（一）：网络�
 const content = marked(art);
 
 // 文章列表模拟数据
-export const posts = function () {
-    let posts = {
+export const articleList = function () {
+    let articleList = {
         // 总页数
         total: 50,
         // 当前页数
@@ -17,7 +17,7 @@ export const posts = function () {
     };
 
     for (let i = 0; i < 10; i++) {
-        let post = {
+        let article = {
             id: 1,
             title: "《趣谈网络协议》读书笔记（一）：网络分层，IP与MAC",
             postDate: "2020-12-23",
@@ -27,10 +27,10 @@ export const posts = function () {
             comment: 800
         };
 
-        posts.data.push(post);
+        articleList.data.push(article);
     }
 
-    return posts;
+    return articleList;
 };
 
 // 文章详情模拟数据
@@ -65,8 +65,8 @@ export const article = {
 };
 
 // 文章分类模拟数据
-export const classification = function () {
-    let classification = [
+export const categories = function () {
+    let categories = [
         {
             id: 1,
             name: "计算机网络",
@@ -93,8 +93,115 @@ export const classification = function () {
             count: 9
         },
     ];
-    for (let i = 0; i < classification.length; i++) {
-        classification[i].name = classification[i].name + '（' + classification[i].count + '篇）';
+    for (let i = 0; i < categories.length; i++) {
+        categories[i].name = categories[i].name + '（' + categories[i].count + '篇）';
     }
-    return classification;
+    return categories;
+};
+
+// 文章标签模拟数据
+export const tags = function () {
+    let archives = [
+        {
+            id: 1,
+            name: "计算机网络",
+            count: 20
+        },
+        {
+            id: 2,
+            name: "数据结构与算法",
+            count: 14
+        },
+        {
+            id: 3,
+            name: "Docker",
+            count: 2
+        },
+        {
+            id: 4,
+            name: "Mysql",
+            count: 3
+        },
+        {
+            id: 5,
+            name: "组成原理",
+            count: 9
+        },
+        {
+            id: 6,
+            name: "集合容器",
+            count: 9
+        },
+        {
+            id: 7,
+            name: "代码优化",
+            count: 9
+        },
+        {
+            id: 8,
+            name: "工作见闻",
+            count: 9
+        },
+    ];
+
+    for (let i = 0; i < archives.length; i++) {
+        archives[i].name = archives[i].name + '（' + archives[i].count + '篇）';
+    }
+    return archives;
+};
+
+// 文章归档模拟数据
+export const articleArchivesList = function () {
+    let articleArchivesList = {
+        // 总页数
+        total: 50,
+        // 当前页数
+        pageNum: 1,
+        // 每页条数
+        pageSize: 10,
+        // 数据
+        data: []
+    };
+
+    for (let i = 0; i < 10; i++) {
+        let articleArchives = {
+            postDate: "2020-12",
+            articles: [
+                {id: 1,
+                    title: "《趣谈网络协议》读书笔记（一）：网络分层，IP与MAC",
+                    postDate: "2020-12-23"
+                },
+            ]
+        };
+
+        for (let j = 0; j < i; j++) {
+            let article = {
+                    id: 1,
+                    title: "《趣谈网络协议》读书笔记（一）：网络分层，IP与MAC",
+                    postDate: "2020-12-23"
+                };
+            articleArchives.articles.push(article);
+        }
+
+        articleArchivesList.data.push(articleArchives);
+    }
+    return articleArchivesList;
+};
+
+// 文章评论模拟数据
+export const comment = function () {
+    let comments = [];
+
+    for (let i = 0; i < 10; i++) {
+        let comment = {
+            pid: 0,
+            id: 55,
+            author: '山猫大战响尾蛇',
+            email: 'xxxxx@163.com',
+            content: '卧槽，这博客也太屌了'
+        };
+        comments.push(comment);
+    }
+
+    return comments;
 };

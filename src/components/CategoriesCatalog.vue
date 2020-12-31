@@ -1,8 +1,10 @@
 <template>
     <!--文章分类目录组件-->
     <div class="class-catalog">
-        <blog-anchor :data="data" :click="jump">
-            <div slot="title">文章分类</div>
+        <blog-anchor :data="data" :click="click">
+            <div slot="title" class="class-catalog-title">
+                <slot name="title"/>
+            </div>
         </blog-anchor>
     </div>
 </template>
@@ -11,7 +13,7 @@
     import BlogAnchor from "./base/BlogAnchor";
 
     export default {
-        name: "ClassCatalog",
+        name: "CategoriesCatalog",
         components: {
             BlogAnchor
         },
@@ -20,15 +22,15 @@
                 type: Array,
                 default: () => []
             },
-        },
-        methods: {
-            jump: function (id) {
-                console.log("跳转到id为" + id + "的文章分类");
+            click: {
+                type: Function,
+                default: function (id) {
+                    console.log("跳转到id为" + id + "的分类");
+                }
             }
         }
     }
 </script>
 
 <style scoped>
-
 </style>

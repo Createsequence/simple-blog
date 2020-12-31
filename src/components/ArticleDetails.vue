@@ -25,7 +25,7 @@
                         #<a :href="tag.id">{{tag.name}} </a>
                     </span>
                 </div>
-                <a-divider class="post-end-divider">正文结束</a-divider>
+                <a-divider class="post-end-divider"/>
                 <span class="post-neighbor-prev">
                     <a :href="data.prevId">
                         {{data.prev}}
@@ -42,8 +42,13 @@
 </template>
 
 <script>
+    import BlogComment from "./base/BlogComment";
+
     export default {
         name: "ArticleDetails",
+        components: {
+            BlogComment
+        },
         props: {
             data: {
                 type: Object,

@@ -9,7 +9,7 @@ import './assets/css/main.less';
 import './assets/css/index.less';
 
 // 引入ant
-import { Button, Layout, Input, Row, Col, Menu, Card, Divider, Pagination, BackTop, Icon, Collapse } from 'ant-design-vue'
+import { Button, Layout, Input, Row, Col, Menu, Card, Divider, Pagination, BackTop, Icon } from 'ant-design-vue'
 Vue.component(Button.name, Button);
 Vue.component(Layout.name, Layout);
 Vue.component(Layout.Content.name, Layout.Content);
@@ -17,7 +17,9 @@ Vue.component(Layout.Footer.name, Layout.Footer);
 Vue.component(Layout.Header.name, Layout.Header);
 Vue.component(Layout.Sider.name, Layout.Sider);
 Vue.component(Input.name, Input);
-Vue.component(Input.Group.name, Input.Group);
+Vue.component(Input.Search.name, Input.Search);
+Vue.component(Input.TextArea.name, Input.TextArea);
+Vue.component(Input.Password.name, Input.Password);
 Vue.component(Row.name, Row);
 Vue.component(Col.name, Col);
 Vue.component(Menu.name, Menu);
@@ -29,8 +31,6 @@ Vue.component(Divider.name, Divider);
 Vue.component(Pagination.name, Pagination);
 Vue.component(BackTop.name, BackTop);
 Vue.component(Icon.name, Icon);
-Vue.component(Collapse.name, Collapse);
-Vue.component(Collapse.Panel.name, Collapse.Panel);
 
 // 引入less
 import less from 'less'

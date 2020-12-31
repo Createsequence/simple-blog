@@ -3,7 +3,7 @@
         <blog-content>
             <personal-info slot="left" :data="info"/>
             <article-list slot="right"
-                          :data="posts"
+                          :data="articleList"
                           :abstract-config="abstractConfig"/>
         </blog-content>
     </div>
@@ -11,8 +11,7 @@
 
 <script>
     import {config} from "../../config";
-    import {posts} from "../assets/js/FillData";
-
+    import {articleList} from "../assets/js/FillData";
     import BlogContent from "../components/base/BlogContent";
     import ArticleList from "../components/ArticleList";
     import PersonalInfo from "../components/PersonalInfo";
@@ -28,7 +27,7 @@
             return {
                 info: config.info,
                 abstractConfig: config.content.abstract,
-                posts: posts()
+                articleList: articleList()
             }
         }
     }

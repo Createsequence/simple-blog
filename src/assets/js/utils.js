@@ -47,22 +47,40 @@ export const getCatalog = () => {
  * 设置固定位置的浮动侧边栏，只能使用在Details页面与Content页面里
  */
 export let generateFixedWindow = () => {
+    let headHeight = 64;
     // 默认返回顶部
     $(window).scrollTop(0);
 
     let content = $('.content');
     let sideRight = $('.side-right');
     let sideLeft = $('.side-left');
-    // 计算位置
+    let foot = $('#foot');
+    let contentHeight = $(content).height();
+    let windowHeight = $(window).height();
+
+    // 浮动窗口的宽高与底边距
+    let footerHeight = contentHeight <= windowHeight ? 0 : $(foot).innerHeight(); // 主内容栏过小则无需上浮
     let width = ($(content).width() - $(sideRight).width()) / (2 * 1.1);
-    let height = $(window).height() - (64 * 2);
-    let footerHeight = $('#foot').innerHeight();
-    $(sideLeft).css({'width': width, 'height': height - footerHeight, 'margin-top': -footerHeight});
-    let gap = $(window).height() - $(sideLeft).height();
+    let height = windowHeight - (headHeight * 2) - footerHeight;
+    $(sideLeft).css({'width': width, 'height': height, 'margin-top': -footerHeight});
 
     // 设置浮动
     $(sideLeft).portamento({
-        gap: gap,
+        gap: windowHeight - $(sideLeft).height(),
+        wrapper: $('#app')
+    });
+};
+
+
+/**
+ * 设置固定位置的浮动窗口
+ */
+export let generateTargetFixedWindow = (targetId) => {
+    let target = $('#' + targetId);
+    let offset = $(target).offset().top;
+
+    $(target).portamento({
+        gap: offset,
         wrapper: $('#app')
     });
 };

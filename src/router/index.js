@@ -9,7 +9,7 @@ VueRouter.prototype.push = function push(to) {
 };
 
 const Home = () => import('../views/Home.vue');
-import Classification from "../views/Classification";
+import Classification from "../views/Categories";
 const routes = [
   {
     path: '/',
@@ -33,8 +33,16 @@ const routes = [
         component: () => import('../views/Details')
       },
       {
-        path: '/home/classification',
-        component: () => import('../views/Classification')
+        path: '/home/categories',
+        component: () => import('../views/Categories')
+      },
+      {
+        path: '/home/archives',
+        component: () => import('../views/Archives')
+      },
+      {
+        path: '/home/search',
+        component: () => import('../views/Search')
       }
     ]
   }

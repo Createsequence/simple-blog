@@ -167,7 +167,8 @@ export const articleArchivesList = function () {
         let articleArchives = {
             postDate: "2020-12",
             articles: [
-                {id: 1,
+                {
+                    id: 1,
                     title: "《趣谈网络协议》读书笔记（一）：网络分层，IP与MAC",
                     postDate: "2020-12-23"
                 },
@@ -176,10 +177,10 @@ export const articleArchivesList = function () {
 
         for (let j = 0; j < i; j++) {
             let article = {
-                    id: 1,
-                    title: "《趣谈网络协议》读书笔记（一）：网络分层，IP与MAC",
-                    postDate: "2020-12-23"
-                };
+                id: 1,
+                title: "《趣谈网络协议》读书笔记（一）：网络分层，IP与MAC",
+                postDate: "2020-12-23"
+            };
             articleArchives.articles.push(article);
         }
 
@@ -188,20 +189,33 @@ export const articleArchivesList = function () {
     return articleArchivesList;
 };
 
-// 文章评论模拟数据
-export const comment = function () {
-    let comments = [];
+// 文章分类模拟数据
+export const articleCatalog = function () {
+    let articleArchivesList = {
+        // 总页数
+        total: 50,
+        // 当前页数
+        pageNum: 1,
+        // 每页条数
+        pageSize: 10,
+        // 数据
+        data: []
+    };
 
+    let articleArchives = {
+        postDate: "",
+        articles: []
+    };
     for (let i = 0; i < 10; i++) {
-        let comment = {
-            pid: 0,
-            id: 55,
-            author: '山猫大战响尾蛇',
-            email: 'xxxxx@163.com',
-            content: '卧槽，这博客也太屌了'
+        let article = {
+            id: 1,
+            title: "《趣谈网络协议》读书笔记（一）：网络分层，IP与MAC",
+            postDate: "2020-12-23"
         };
-        comments.push(comment);
+        articleArchives.articles.push(article);
     }
+    articleArchivesList.data.push(articleArchives);
 
-    return comments;
+    return articleArchivesList;
+
 };

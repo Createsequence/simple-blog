@@ -11,16 +11,13 @@
                             {{config.info.title}}
                         </div>
                     </a-col>
+
                     <!--菜单-->
                     <a-col :xs="{ span: 24 }" :sm="{ span: 9, offset: 10 }">
-                        <a-menu mode="horizontal" class="menu" :defaultSelectedKeys="['1']">
-                            <a-menu-item key="1" class="menuItem" @click="link('content')">文章</a-menu-item>
-                            <a-menu-item key="2" class="menuItem" @click="link('categories')">分类</a-menu-item>
-                            <a-menu-item key="3" class="menuItem" @click="link('archives')">归档</a-menu-item>
-                            <a-menu-item key="4" class="menuItem" @click="linkToAbout()">关于</a-menu-item>
-                        </a-menu>
+                        <blog-menu :data="menus" horizontal="horizontal"/>
                     </a-col>
                 </a-row>
+
             </a-layout-header>
 
             <!--内容-->
@@ -52,24 +49,36 @@
 
 <script>
     import {config} from "../../config";
-    import {linkToArticle} from "../assets/js/utils";
+    import BlogMenu from "../components/base/BlogMenu";
+
+    const menus = [
+        {
+            name: '文章',
+            path: '/home/content'
+        },
+        {
+            name: '分类',
+            path: '/home/categories'
+        },
+        {
+            name: '归档',
+            path: '/home/archives'
+        },
+        {
+            name: '关于',
+            path: '/home/content'
+        }
+    ];
 
     export default {
         name: 'Home',
-        components: {},
+        components: {
+            BlogMenu
+        },
         data() {
             return {
-                config: config
-            }
-        },
-        methods: {
-            link(path) {
-                this.$router.push({
-                    path: '/home/' + path,
-                })
-            },
-            linkToAbout() {
-                linkToArticle(this, config.content.about.contentId);
+                config: config,
+                menus: menus
             }
         }
     }
@@ -86,12 +95,6 @@
             font-size: var(--h2);
             font-weight: bold;
             text-align: center;
-        }
-
-        .menu {
-            background-color: var(--my-white);
-            font-size: var(--h4);
-            line-height: var(--menu-height);
         }
     }
 

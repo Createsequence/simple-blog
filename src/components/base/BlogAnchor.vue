@@ -49,16 +49,35 @@
                 default: function (t) {
                     console.log('传入值: ' + t);
                 }
+            },
+            // 点击后是否切换样式已选择
+            markSelected: {
+                type: Boolean,
+                default: true
+            },
+            // 默认选中第几项
+            defaultSelected: {
+                type: Number,
+                default: 0
             }
         },
         methods: {
             // 点击后变色
             selected(eleId) {
+                if (!this.markSelected) {
+                    return;
+                }
                 $('a').removeClass('selected');
                 if (eleId || eleId === 0) {
                     $('#' + eleId).addClass('selected');
                 }
             }
+        },
+        mounted() {
+            if (!this.markSelected) {
+                return;
+            }
+            this.selected(document.getElementsByTagName('a')[this.defaultSelected].id);
         }
     }
 </script>

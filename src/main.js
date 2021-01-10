@@ -9,7 +9,7 @@ import './assets/css/main.less';
 import './assets/css/index.less';
 
 // 引入ant
-import {Button, Layout, Input, Row, Col, Menu, Divider, Pagination, BackTop, Icon, Drawer} from 'ant-design-vue';
+import {Button, Layout, Input, Row, Col, Menu, Divider, Pagination, BackTop, Icon, Drawer, FormModel, Checkbox, Radio, Select, Switch} from 'ant-design-vue';
 Vue.use(Button);
 Vue.use(Layout);
 Vue.use(Input);
@@ -21,6 +21,11 @@ Vue.use(Pagination);
 Vue.use(BackTop);
 Vue.use(Icon);
 Vue.use(Drawer);
+Vue.use(FormModel);
+Vue.use(Checkbox);
+Vue.use(Radio);
+Vue.use(Select);
+Vue.use(Switch);
 
 // 引入less
 import less from 'less'
@@ -30,6 +35,15 @@ Vue.use(less);
 import 'highlight.js/styles/darcula.css';
 import VueHighlightJS from 'vue-highlightjs'
 Vue.use(VueHighlightJS);
+
+// 引入工具类
+import {util} from "./assets/js/utils";
+Vue.prototype.$util = util;
+
+// 引入mavonEditor编辑器
+import mavonEditor from 'mavon-editor';
+import 'mavon-editor/dist/css/index.css';
+Vue.use(mavonEditor);
 
 new Vue({
   router,

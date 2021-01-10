@@ -28,12 +28,12 @@
                 <a-divider class="post-end-divider"/>
                 <span class="post-neighbor-prev">
                     <a :href="data.prevId">
-                        {{data.prev}}
+                        上一篇: {{data.prev}}
                     </a>
                 </span>
                 <span class="post-neighbor-next">
                     <a :href="data.nextId">
-                        {{data.next}}
+                        下一篇: {{data.next}}
                     </a>
                 </span>
             </div>
@@ -61,9 +61,9 @@
 <style lang="less">
     .article-details {
         padding-top: var(--head-height);
-
         .post-info {
             text-align: center;
+            padding-bottom: 5em;
         }
         .post-end {
             .post-tag {

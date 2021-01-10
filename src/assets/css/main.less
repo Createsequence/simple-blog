@@ -66,6 +66,7 @@ body {
 }
 
 /* 组件通用样式 */
+// 文章详情
 .content {
     padding-top: var(--head-height);
     background-color: var(--my-white);
@@ -86,6 +87,7 @@ body {
         }
     }
 }
+// 目录滚动条
 .side-left::-webkit-scrollbar {
     width: 4px;
 }
@@ -94,6 +96,12 @@ body {
 }
 
 /* 组件重写样式 */
+// 导航栏
 .ant-menu-horizontal {
     border-bottom: none;
+}
+// markdown编辑器
+.editor {
+    z-index: 0 !important;
+    border: 1px var(--my-gary) solid !important;
 }

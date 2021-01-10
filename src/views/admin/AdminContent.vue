@@ -2,7 +2,85 @@
     <div class="admin-content">
         <blog-content>
             <div slot="left">
-                <blog-anchor slot="left" :data="articleMenus"/>
+                <blog-anchor slot="left" :data="articleMenus" :click="click"/>
+            </div>
+            <div slot="right">
+                <a-input placeholder="请输入标题" size="large" v-model="article.title"/>
+                <br><br>
+
+                <mavon-editor class="editor"
+                              :toolbars="editorOption"
+                              :defaultOpen="'edit'"
+                              :subfield="false"
+                              @save="save"
+                              boxShadowStyle="none"
+                              v-model="article.content"/>
+
+                <a-divider orientation="right">文章设置</a-divider>
+
+                <a-row class="group">
+                    <a-col :sm="{span: 2}" class="group-title">分类:</a-col>
+                    <a-col :sm="{span: 22}">
+                        <a-checkbox-group v-model="article.categories">
+                            <a-checkbox v-for="c in categories"
+                                        :value="c.id">
+                                {{c.name}}
+                            </a-checkbox>
+                        </a-checkbox-group>
+                    </a-col>
+                </a-row>
+
+                <a-row class="group">
+                    <a-col :sm="{span: 2}" class="group-title">标签:</a-col>
+                    <a-col :sm="{span: 22}">
+                        <a-select mode="tags"
+                                  allowClear
+                                  style="width: 100%"
+                                  placeholder="点击选择标签"
+                                  @select="addTag"
+                        >
+                            <a-select-option v-for="tag in tags" :value="tag.id">
+                                {{ tag.name }}
+                            </a-select-option>
+                        </a-select>
+                    </a-col>
+                </a-row>
+
+                <a-row class="group">
+                    <a-col :sm="{span: 2}" class="group-title">摘要:</a-col>
+                    <a-col :sm="{span: 22}">
+                        <a-textarea placeholder="若不填写，则根据设置默认生成摘要" :rows="4" @change="subAbstract" v-model="article.abstract"/>
+                    </a-col>
+                </a-row>
+
+                <a-divider orientation="right">发布设置</a-divider>
+
+                <a-row class="group">
+                    <a-col :sm="{span: 2}" class="group-title">是否发布:</a-col>
+                    <a-col :sm="{span: 22}">
+                        <a-switch default-checked>
+                            <a-icon slot="checkedChildren" type="check" />
+                            <a-icon slot="unCheckedChildren" type="close" />
+                        </a-switch>
+                    </a-col>
+                </a-row>
+
+                <a-row class="group">
+                    <a-col :sm="{span: 2}" class="group-title">访问密码:</a-col>
+                    <a-col :sm="{span: 22}">
+                        <a-input placeholder="请输入访问密码" />
+                    </a-col>
+                </a-row>
+
+                <a-row class="group">
+                    <br>
+                    <a-col :sm="{span: 6, offset: 4}">
+                        <a-button block type="primary" size="large" @click="submit">发布文章</a-button>
+                    </a-col>
+                    <a-col :sm="{span: 6, offset: 2}">
+                        <a-button block type="dashed" size="large">存为草稿</a-button>
+                    </a-col>
+                </a-row>
             </div>
         </blog-content>
     </div>
@@ -11,15 +89,26 @@
 <script>
     import BlogContent from "../../components/base/BlogContent";
     import BlogAnchor from "../../components/base/BlogAnchor";
+    import {config} from "../../../config";
+    import {categories, tags} from "../../assets/js/FillData";
+    import {storage} from "../../assets/js/utils";
 
     const articleMenus = [
         {
-            id: 1,
+            id: '/admin/articleEdit',
             name: '新文章'
         },
         {
-            id: 2,
+            id: '/admin/article',
             name: '文章管理'
+        },
+        {
+            id: '/admin/article',
+            name: '草稿箱'
+        },
+        {
+            id: '/admin/article',
+            name: '回收站'
         }
     ];
 
@@ -31,12 +120,97 @@
         },
         data() {
             return {
-                articleMenus: articleMenus
+                articleMenus: articleMenus,
+                categories: categories(),
+                tags: tags(),
+                article: {
+                    title: '',
+                    content: '',
+                    categories: [],
+                    abstract: '',
+                },
+                editorOption: {
+                    bold: true, // 粗体
+                    italic: true, // 斜体
+                    header: true, // 标题
+                    underline: true, // 下划线
+                    strikethrough: true, // 中划线
+                    mark: true, // 标记
+                    quote: true, // 引用
+                    ol: true, // 有序列表
+                    ul: true, // 无序列表
+                    link: true, // 链接
+                    code: true, // code
+                    table: true, // 表格
+                    fullscreen: true, // 全屏编辑
+                    htmlcode: true, // 展示html源码
+                    help: true, // 帮助
+                    undo: true, // 上一步
+                    redo: true, // 下一步
+                    trash: true, // 清空
+                    save: true, // 保存（触发events中的save事件）
+                    alignleft: true, // 左对齐
+                    aligncenter: true, // 居中
+                    alignright: true, // 右对齐
+                    subfield: false, // 单双栏模式
+                    preview: true, // 预览
+                }
+            }
+        },
+        methods: {
+            click(path) {
+                console.log("跳转的链接：" + path);
+            },
+            save(content, render) {
+                console.log("保存文章！" + content);
+                storage.set('blog_template_article', content);
+            },
+            subAbstract() {
+                let limit = config.content.abstract.length;
+                let abstract = this.article.abstract;
+                this.article.abstract = abstract.length <= limit ? abstract : abstract.substring(0, limit);
+            },
+            addTag(value, option) {
+                // 是否为新增选项
+                for (let i = 0; i < this.tags.length; i++) {
+                    if (value === this.tags[i].id) {
+                        return;
+                    }
+                }
+
+                option.value = '这里是新增标签的id';
+                let tag = {
+                    id: '这里是新增标签的id',
+                    name: value
+                }
+                this.tags.push(tag);
+                console.log("新增选项：" + value);
+            },
+            submit() {
+                console.log("提交！");
+                console.log(this.article);
+            }
+        },
+        mounted() {
+            let content = storage.get('blog_template_article');
+            if (content !== '' && this.article.content === '') {
+                this.content = content;
             }
         }
     }
 </script>
 
-<style scoped>
+<style lang="less">
+    .admin-content {
+        padding-top: var(--head-height);
 
+        .ant-divider {
+            padding-top: 2em;
+            color: var(--my-gary);
+        }
+
+        .group {
+            padding-bottom: 1em;
+        }
+    }
 </style>

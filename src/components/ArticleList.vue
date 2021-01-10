@@ -8,7 +8,7 @@
                     <a @click="link(post.id)">{{post.title}}</a>
                 </div>
                 <div class="post-content">
-                    {{abstract(post.content)}}
+                    {{abstract(post)}}
                 </div>
                 <div class="post-info">
                     阅读({{post.read}}) 评论({{post.comment}}) @ posted by {{post.author}} on {{post.postDate}}
@@ -55,11 +55,15 @@
         },
         methods: {
             // 截取摘要
-            abstract: function(content) {
-                let abstractConfig = this.abstractConfig;
-                content = content.replace(/<.*?>/g, "");
-                return (abstractConfig.auto && content.length > abstractConfig.length) ?
-                    content.substring(0, abstractConfig.length) + "......" : content;
+            abstract: function(post) {
+                let abstract = post.abstract;
+                if (!abstract) {
+                    let abstractConfig = this.abstractConfig;
+                    let content = post.content.replace(/<.*?>/g, "");
+                    return (abstractConfig.auto && content.length > abstractConfig.length) ?
+                        content.substring(0, abstractConfig.length) + "......" : content;
+                }
+                return abstract;
             },
             changePage: function(pageNum) {
                 this.current = pageNum;

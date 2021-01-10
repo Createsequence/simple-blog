@@ -5,8 +5,8 @@
         <a-row>
             <!--大屏幕显示水平菜单栏-->
             <a-col :xs="{ span: 0 }" :sm="{ span: 24 }">
-                <a-menu :mode="horizontal" class="menu" :defaultSelectedKeys="['0']">
-                    <a-menu-item v-for="(menu, index) in data" :key="index" class="menuItem" @click="link(menu.path)" >
+                <a-menu :mode="horizontal" class="menu" :defaultSelectedKeys="['menu::0']">
+                    <a-menu-item v-for="(menu, index) in data" :key="'menu::' + index" class="menuItem" @click="link(menu.path)" >
                         {{menu.name}}
                     </a-menu-item>
                 </a-menu>
@@ -21,7 +21,7 @@
         </a-row>
 
 
-        <!--抽屉-->
+        <!--小屏幕展示抽屉-->
         <a-drawer :placement="placement"
                   :closable="false"
                   :visible="visible"

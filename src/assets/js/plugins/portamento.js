@@ -215,8 +215,9 @@
 					}
 				} else {
 					// if we're above the top scroll boundary
-					panel.removeClass('fixed');
-					panel.css('top', '0'); // remove any added gap
+					// There's nothing to do. just stop here By Createsequence
+					// panel.removeClass('fixed');
+					// panel.css('top', '0'); // remove any added gap
 				}
 			} else {
 				panel.removeClass('fixed');

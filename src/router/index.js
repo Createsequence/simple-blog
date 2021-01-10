@@ -54,10 +54,10 @@ const routes = [
         children: [
             {
               path: '/',
-              redirect: 'admin/article'
+              redirect: '/admin/article'
             },
             {
-              path: '/article',
+              path: '/admin/article',
               name: 'AdminContent',
               component: () => import('../views/admin/AdminContent')
             }

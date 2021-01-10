@@ -1,4 +1,5 @@
 import $ from "jquery";
+import {isEmptyObject} from "ant-design-vue/lib/vc-form/src/utils";
 
 /**
  * 构建目录
@@ -44,10 +45,10 @@ export const getCatalog = () => {
 };
 
 /**
- * 设置固定位置的浮动侧边栏，只能使用在Details页面与Content页面里
+ * 设置固定位置的浮动侧边栏，用于BlogContent组件中
  */
 export let generateFixedWindow = () => {
-    let headHeight = 64;
+    let headHeight = 64; //默认顶部栏高度
     // 默认返回顶部
     $(window).scrollTop(0);
 
@@ -79,4 +80,34 @@ export let linkToArticle = (that, id) => {
         path: '/home/details',
         query: {id: id}
     })
+};
+
+/**
+ * 本地缓存操作方法
+ */
+export let storage = {
+    get: function (key) {
+        let val = localStorage.getItem(key);
+        return !val ? '' : val;
+    },
+
+    set: function (key, val) {
+        localStorage.setItem(key, val);
+    },
+
+    remove: function (key) {
+        localStorage.removeItem(key);
+    },
+
+    clear: function () {
+        localStorage.clear();
+    }
+};
+
+export let util = {
+    // 判空
+    isEmpty: function (val) {
+        let type = typeof (val);
+        return type !== 'undefined' || type.trim().length === 0;
+    }
 };

@@ -47,7 +47,7 @@
     const menus = [
         {
             name: '文章',
-            path: '/admin/articles'
+            path: '/admin/article'
         },
         {
             name: '分类',

@@ -24,9 +24,15 @@ export const articleList = function () {
             content: content,
             author: 'Createsequence',
             read: 8000,
-            comment: 800
+            comment: 800,
+            status: '1' // 文章状态，0已删除，1发布，2未发布，3草稿
         };
 
+        if (i % 2 === 0) {
+            article.abstract = '这里是手动设置的文章摘要......';
+        }
+
+        console.log(article);
         articleList.data.push(article);
     }
 
@@ -36,7 +42,7 @@ export const articleList = function () {
 // 文章详情模拟数据
 export const article = {
     id: 1,
-    title: "《趣谈网络协议》读书笔记（一）：网络分层，IP与MAC",
+    title: "渲染样式测试文档",
     postDate: "2020-12-23",
     content: content,
     author: 'Createsequence',
@@ -45,9 +51,9 @@ export const article = {
     read: 8000,
     comment: 800,
     prevId: "1",
-    prev: "上一篇《趣谈网络协议》读书笔记（一）：网络分层，IP与MAC",
+    prev: "渲染样式测试文档(一)",
     nextId: "1",
-    next: "下一篇《趣谈网络协议》读书笔记（一）：网络分层，IP与MAC",
+    next: "渲染样式测试文档（二）",
     tags: [
         {
             id: "1",
@@ -68,34 +74,31 @@ export const article = {
 export const categories = function () {
     let categories = [
         {
-            id: 1,
+            id: '1',
             name: "计算机网络",
             count: 20
         },
         {
-            id: 2,
+            id: '2',
             name: "数据结构与算法",
             count: 14
         },
         {
-            id: 3,
+            id: '3',
             name: "Docker",
             count: 2
         },
         {
-            id: 4,
+            id: '4',
             name: "Mysql",
             count: 3
         },
         {
-            id: 5,
+            id: '5',
             name: "组成原理",
             count: 9
         },
     ];
-    for (let i = 0; i < categories.length; i++) {
-        categories[i].name = categories[i].name + '（' + categories[i].count + '篇）';
-    }
     return categories;
 };
 
@@ -103,50 +106,46 @@ export const categories = function () {
 export const tags = function () {
     let archives = [
         {
-            id: 1,
+            id: '1',
             name: "计算机网络",
             count: 20
         },
         {
-            id: 2,
+            id: '2',
             name: "数据结构与算法",
             count: 14
         },
         {
-            id: 3,
+            id: '3',
             name: "Docker",
             count: 2
         },
         {
-            id: 4,
+            id: '4',
             name: "Mysql",
             count: 3
         },
         {
-            id: 5,
+            id: '5',
             name: "组成原理",
             count: 9
         },
         {
-            id: 6,
+            id: '6',
             name: "集合容器",
             count: 9
         },
         {
-            id: 7,
+            id: '7',
             name: "代码优化",
             count: 9
         },
         {
-            id: 8,
+            id: '8',
             name: "工作见闻",
             count: 9
         },
     ];
-
-    for (let i = 0; i < archives.length; i++) {
-        archives[i].name = archives[i].name + '（' + archives[i].count + '篇）';
-    }
     return archives;
 };
 

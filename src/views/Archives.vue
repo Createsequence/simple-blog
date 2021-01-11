@@ -5,7 +5,6 @@
                            :data="tags"
                            :click="jump">
                 <div slot="title">共有 {{tags.length}} 个标签</div>
-                <a slot="item">全部</a>
             </categories-catalog>
 
             <article-archives-list slot="right"

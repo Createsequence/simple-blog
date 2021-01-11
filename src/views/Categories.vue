@@ -5,7 +5,6 @@
                                 :data="categories"
                                 :click="jump">
                 <div slot="title">共有 {{categories.length}} 个分类</div>
-                <a slot="item">全部</a>
             </categories-catalog>
 
             <article-list slot="right"

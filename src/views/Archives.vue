@@ -29,7 +29,7 @@
         },
         data() {
             return {
-                tags: tags(),
+                tags: tags().data,
                 articleArchivesList: articleArchivesList()
             }
         },

@@ -21,7 +21,7 @@
                     <blog-content>
 
                         <div slot="left">
-                            <blog-anchor :default-selected="0">
+                            <blog-anchor>
 
                                 <a-divider>文章管理</a-divider>
                                 <blog-anchor-item v-for="am in articleMenus"
@@ -73,12 +73,12 @@
     // 文章菜单
     const articleMenus = [
         {
-            path: '/admin/articleEdit',
-            name: '新文章'
-        },
-        {
             path: '/admin/articleList',
             name: '文章管理'
+        },
+        {
+            path: '/admin/articleEdit',
+            name: '新文章'
         },
         {
             path: '/admin/articleDraft',
@@ -89,20 +89,22 @@
             name: '回收站'
         }
     ];
+
     // 分类菜单
     const categoriseMenus = [
         {
-            path: '/admin/articleEdit',
+            path: '/admin/menusList',
             name: '菜单管理'
         },
-    ]
+    ];
+
     // 标签菜单
     const tagMenus = [
         {
-            path: '/admin/articleEdit',
+            path: '/admin/tagsList',
             name: '标签管理'
         },
-    ]
+    ];
 
     export default {
         name: "AdminHome",

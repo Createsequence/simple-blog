@@ -77,6 +77,7 @@
 
         .blog-table-header {
             font-weight: bold;
+            border-bottom: 1px var(--my-gary) solid;
         }
 
         .left {
@@ -89,13 +90,12 @@
         .blog-table-body {
 
             .blog-table-tr {
-                border-top: 1px var(--my-gary) solid;
                 border-bottom: 1px var(--my-gary) solid;
                 padding: 0.3em 0;
             }
 
             .blog-table-tr:nth-child(odd){
-                background-color: var(--my-gary);
+                /*background-color: var(--my-gary);*/
             }
 
         }

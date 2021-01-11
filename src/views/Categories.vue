@@ -31,7 +31,7 @@
         },
         data() {
             return {
-                categories: categories(),
+                categories: categories().data,
                 abstractConfig: config.content.abstract,
                 articleList: articleList(),
             }

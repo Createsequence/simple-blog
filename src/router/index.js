@@ -54,17 +54,17 @@ const routes = [
         children: [
             {
               path: '/',
-              redirect: '/admin/articleEdit'
-            },
-            {
-              path: '/admin/articleEdit',
-              name: 'AdminArticleEdit',
-              component: () => import('../views/admin/AdminArticleEdit')
+              redirect: '/admin/articleList'
             },
             {
                 path: '/admin/articleList',
                 name: 'AdminArticleList',
                 component: () => import('../views/admin/AdminArticleList')
+            },
+            {
+                path: '/admin/articleEdit',
+                name: 'AdminArticleEdit',
+                component: () => import('../views/admin/AdminArticleEdit')
             },
             {
                 path: '/admin/articleDraft',
@@ -75,6 +75,16 @@ const routes = [
                 path: '/admin/articleAbandoned',
                 name: 'AdminArticleAbandoned',
                 component: () => import('../views/admin/AdminArticleAbandoned')
+            },
+            {
+                path: '/admin/menusList',
+                name: 'AdminMenusList',
+                component: () => import('../views/admin/AdminMenusList')
+            },
+            {
+                path: '/admin/tagsList',
+                name: 'AdminTagsList',
+                component: () => import('../views/admin/AdminTagsList')
             }
         ]
     }

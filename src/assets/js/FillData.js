@@ -3,9 +3,8 @@ import art from '../post/渲染样式测试文档.md'
 
 const content = marked(art);
 
-// 文章列表模拟数据
-export const articleList = function () {
-    let articleList = {
+function getPageHelper() {
+    return {
         // 总页数
         total: 50,
         // 当前页数
@@ -15,6 +14,11 @@ export const articleList = function () {
         // 数据
         data: []
     };
+};
+
+// 文章列表模拟数据
+export const articleList = function () {
+    let articleList = getPageHelper();
 
     for (let i = 0; i < 10; i++) {
         let article = {
@@ -70,31 +74,37 @@ export const article = {
 
 // 文章分类模拟数据
 export const categories = function () {
-    let categories = [
+    let categories = getPageHelper();
+    categories.data = [
         {
             id: '1',
             name: "计算机网络",
-            count: 20
+            count: 20,
+            createData: '2020-01-12'
         },
         {
             id: '2',
             name: "数据结构与算法",
-            count: 14
+            count: 14,
+            createData: '2020-01-12'
         },
         {
             id: '3',
             name: "Docker",
-            count: 2
+            count: 2,
+            createData: '2020-01-12'
         },
         {
             id: '4',
             name: "Mysql",
-            count: 3
+            count: 3,
+            createData: '2020-01-12'
         },
         {
             id: '5',
             name: "组成原理",
-            count: 9
+            count: 9,
+            createData: '2020-01-12'
         },
     ];
     return categories;
@@ -102,46 +112,55 @@ export const categories = function () {
 
 // 文章标签模拟数据
 export const tags = function () {
-    let archives = [
+    let archives = getPageHelper()
+    archives.data = [
         {
             id: '1',
             name: "计算机网络",
-            count: 20
+            count: 20,
+            createData: '2020-01-12'
         },
         {
             id: '2',
             name: "数据结构与算法",
-            count: 14
+            count: 14,
+            createData: '2020-01-12'
         },
         {
             id: '3',
             name: "Docker",
-            count: 2
+            count: 2,
+            createData: '2020-01-12'
         },
         {
             id: '4',
             name: "Mysql",
-            count: 3
+            count: 3,
+            createData: '2020-01-12'
         },
         {
             id: '5',
             name: "组成原理",
-            count: 9
+            count: 9,
+            createData: '2020-01-12'
         },
         {
             id: '6',
             name: "集合容器",
-            count: 9
+            count: 9,
+            createData: '2020-01-12'
         },
         {
             id: '7',
             name: "代码优化",
-            count: 9
+            count: 9,
+            createData: '2020-01-12'
         },
         {
             id: '8',
             name: "工作见闻",
-            count: 9
+            count: 9,
+            createData: '2020-01-12'
         },
     ];
     return archives;

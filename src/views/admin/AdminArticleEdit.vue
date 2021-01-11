@@ -193,7 +193,6 @@
 
 <style lang="less">
     .admin-article-edit {
-        padding-top: var(--head-height);
 
         .editor {
             height: 500px !important;

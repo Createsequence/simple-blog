@@ -30,8 +30,8 @@ Vue.use(Table);
 Vue.prototype.$notification = notification;
 // 配置提醒框
 notification.config({
-  placement: 'bottomRight',
-  bottom: '50px',
+  placement: 'topRight',
+  top: '75px',
   duration: 1.5,
 });
 
@@ -53,7 +53,9 @@ import mavonEditor from 'mavon-editor';
 import 'mavon-editor/dist/css/index.css';
 Vue.use(mavonEditor);
 
-new Vue({
+let vue = new Vue({
   router,
   render: h => h(App)
 }).$mount('#app');
+
+export default vue;

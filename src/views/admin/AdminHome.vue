@@ -43,7 +43,7 @@
                             </blog-anchor>
                         </div>
 
-                        <div slot="right">
+                        <div slot="right" class="right">
                             <router-view/>
                         </div>
 
@@ -81,11 +81,11 @@
             name: '文章管理'
         },
         {
-            path: '/admin/article',
+            path: '/admin/articleDraft',
             name: '草稿箱'
         },
         {
-            path: '/admin/article',
+            path: '/admin/articleAbandoned',
             name: '回收站'
         }
     ];
@@ -140,6 +140,10 @@
             font-weight: bold;
             text-align: center;
         }
+    }
+
+    .admin-home .content .right {
+        padding-top: var(--head-height);
     }
 
     .foot {

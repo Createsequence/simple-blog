@@ -1,9 +1,7 @@
 <template>
-    <div class="admin-article-list">
-
+    <div class="admin-article-draft">
         <blog-table :columns="columns"
                     :data="articleList"/>
-
     </div>
 </template>
 
@@ -14,32 +12,19 @@
     const columns = [
         {
             title: '标题',
-            name: ['title', 'postDate'],
-            span: 14,
-            align: 'left',
-            formatter: function (row, col) {
-                return '<a href="#">' + row.title + '</a>' + ' (' + row.postDate + ')';
-            }
+            name: 'title',
+            span: 16,
+            align: 'left'
         },
         {
-            title: '阅读量',
-            name: 'read',
-            span: 2
-        },
-        {
-            title: '评论',
-            name: 'comment',
-            span: 2
-        },
-        {
-            title: '发布状态',
-            name: 'status',
-            span: 3
+            title: '最后修改时间',
+            name: 'postDate',
+            span: 4
         },
         {
             title: '操作',
             name: 'status',
-            span: 3,
+            span: 4,
             formatter: function (row, col) {
                 return '<a href="#">编辑</a> | <a href="#">删除</a>'
             }
@@ -47,18 +32,19 @@
     ];
 
     export default {
-        name: "AdminArticleList",
+        name: "AdminArticleDraft",
         components: {
             BlogTable
         },
         data() {
             return {
-                articleList: articleList(),
-                columns: columns
-            }
+                columns: columns,
+                articleList: articleList()
+            };
         }
     }
 </script>
 
 <style scoped>
+
 </style>

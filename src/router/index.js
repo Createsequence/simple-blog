@@ -54,7 +54,7 @@ const routes = [
         children: [
             {
               path: '/',
-              redirect: '/admin/articleList'
+              redirect: '/admin/articleEdit'
             },
             {
               path: '/admin/articleEdit',
@@ -65,6 +65,16 @@ const routes = [
                 path: '/admin/articleList',
                 name: 'AdminArticleList',
                 component: () => import('../views/admin/AdminArticleList')
+            },
+            {
+                path: '/admin/articleDraft',
+                name: 'AdminArticleDraft',
+                component: () => import('../views/admin/AdminArticleDraft')
+            },
+            {
+                path: '/admin/articleAbandoned',
+                name: 'AdminArticleAbandoned',
+                component: () => import('../views/admin/AdminArticleAbandoned')
             }
         ]
     }

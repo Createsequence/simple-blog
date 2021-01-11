@@ -9,7 +9,7 @@ import './assets/css/main.less';
 import './assets/css/index.less';
 
 // 引入ant
-import {Button, Layout, Input, Row, Col, Menu, Divider, Pagination, BackTop, Icon, Drawer, FormModel, Checkbox, Radio, Select, Switch} from 'ant-design-vue';
+import {Button, Layout, Input, Row, Col, Menu, Divider, Pagination, BackTop, Icon, Drawer, Checkbox, Radio, Select, Switch, Table, notification} from 'ant-design-vue';
 Vue.use(Button);
 Vue.use(Layout);
 Vue.use(Input);
@@ -21,11 +21,19 @@ Vue.use(Pagination);
 Vue.use(BackTop);
 Vue.use(Icon);
 Vue.use(Drawer);
-Vue.use(FormModel);
 Vue.use(Checkbox);
 Vue.use(Radio);
 Vue.use(Select);
 Vue.use(Switch);
+Vue.use(Table);
+
+Vue.prototype.$notification = notification;
+// 配置提醒框
+notification.config({
+  placement: 'bottomRight',
+  bottom: '50px',
+  duration: 1.5,
+});
 
 // 引入less
 import less from 'less'

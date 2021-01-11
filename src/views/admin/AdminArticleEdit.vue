@@ -1,5 +1,5 @@
 <template>
-    <div class="admin-content">
+    <div class="admin-article-edit">
 
         <a-input placeholder="请输入标题" size="large" v-model="article.title"/>
         <br><br>
@@ -78,7 +78,7 @@
                 <a-button block type="primary" size="large" @click="commit">提交</a-button>
             </a-col>
             <a-col :sm="{span: 6, offset: 2}">
-                <a-button block type="dashed" size="large" @click="commit(3)">存为草稿</a-button>
+                <a-button block type="dashed" size="large" @click="commit('3')">存为草稿</a-button>
             </a-col>
         </a-row>
 
@@ -90,26 +90,6 @@
     import {config} from "../../../config";
     import {categories, tags} from "../../assets/js/FillData";
     import {storage} from "../../assets/js/utils";
-
-    // 文章菜单
-    const articleMenus = [
-        {
-            id: '/admin/articleEdit',
-            name: '新文章'
-        },
-        {
-            id: '/admin/article',
-            name: '文章管理'
-        },
-        {
-            id: '/admin/article',
-            name: '草稿箱'
-        },
-        {
-            id: '/admin/article',
-            name: '回收站'
-        }
-    ];
 
     // 编辑器设置
     const editorOption = {
@@ -143,7 +123,6 @@
         name: "AdminContent",
         data() {
             return {
-                articleMenus: articleMenus,
                 categories: categories(),
                 tags: tags(),
                 article: {
@@ -159,7 +138,10 @@
         },
         methods: {
             saveTemplate(content, render) {
-                console.log("保存文章！" + content);
+                this.$notification.success({
+                    message: '成功',
+                    description: '已保存至本地缓存',
+                });
                 storage.set('blog_template_article', content);
             },
             subAbstract() {
@@ -184,13 +166,18 @@
                 console.log("新增选项：" + value);
             },
             commit(status) {
-                console.log("提交！");
-                if (status) {
-                    console.log("以草稿形式提交！")
-                    this.article.status = '3';
+                if (status === '3') {
+                    this.$notification.info({
+                        message: '提示',
+                        description: '保存至草稿箱！',
+                    });
+                    this.article.status = status;
                 }
                 console.log(this.article);
-
+                this.$notification.success({
+                    message: '成功',
+                    description: '提交成功！',
+                });
                 // 提交后清空本地缓存
                 storage.remove('blog_template_article');
             }
@@ -205,7 +192,7 @@
 </script>
 
 <style lang="less">
-    .admin-content {
+    .admin-article-edit {
         padding-top: var(--head-height);
 
         .editor {

@@ -54,12 +54,17 @@ const routes = [
         children: [
             {
               path: '/',
-              redirect: '/admin/article'
+              redirect: '/admin/articleList'
             },
             {
-              path: '/admin/article',
-              name: 'AdminContent',
-              component: () => import('../views/admin/AdminContent')
+              path: '/admin/articleEdit',
+              name: 'AdminArticleEdit',
+              component: () => import('../views/admin/AdminArticleEdit')
+            },
+            {
+                path: '/admin/articleList',
+                name: 'AdminArticleList',
+                component: () => import('../views/admin/AdminArticleList')
             }
         ]
     }

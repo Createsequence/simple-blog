@@ -77,7 +77,7 @@
             name: '新文章'
         },
         {
-            path: '/admin/article',
+            path: '/admin/articleList',
             name: '文章管理'
         },
         {
@@ -120,7 +120,9 @@
         },
         methods: {
             click(path) {
-                console.log("跳转的链接：" + path);
+                this.$router.push({
+                    path: path
+                })
             },
         }
     }

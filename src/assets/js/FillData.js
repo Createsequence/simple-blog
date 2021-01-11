@@ -24,15 +24,13 @@ export const articleList = function () {
             content: content,
             author: 'Createsequence',
             read: 8000,
-            comment: 800,
+            comment: 0,
             status: '1' // 文章状态，0已删除，1发布，2未发布，3草稿
         };
 
         if (i % 2 === 0) {
             article.abstract = '这里是手动设置的文章摘要......';
         }
-
-        console.log(article);
         articleList.data.push(article);
     }
 

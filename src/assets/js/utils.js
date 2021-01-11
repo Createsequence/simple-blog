@@ -109,5 +109,5 @@ export let util = {
     isEmpty: function (val) {
         let type = typeof (val);
         return type !== 'undefined' || type.trim().length === 0;
-    }
+    },
 };

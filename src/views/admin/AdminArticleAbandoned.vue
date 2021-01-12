@@ -1,13 +1,35 @@
 <template>
     <div class="admin-article-abandoned">
-        <blog-table :columns="columns"
-                    :data="articleList"/>
+
+        <blog-table :data="articleList">
+            <div slot="head">
+                <blog-table-tr>
+                    <blog-table-td v-for="c in columns" :span="c.span" :html="c.title" :align="c.align"/>
+
+                    <blog-table-td span="3" html="操作"/>
+                </blog-table-tr>
+            </div>
+
+            <div slot="body">
+                <blog-table-tr v-for="a in articleList.data" >
+                    <blog-table-td v-for="c in columns" :span="c.span" :align="c.align">
+                        {{a[c.name]}}
+                    </blog-table-td>
+
+                    <blog-table-td span="3">
+                        <a href="#">恢复</a> |
+                        <a href="#">彻底删除</a>
+                    </blog-table-td>
+                </blog-table-tr>
+            </div>
+        </blog-table>
+
     </div>
 </template>
 
 <script>
     import {articleList} from "../../assets/js/FillData";
-    import BlogTable from "../../components/base/BlogTable";
+    import BlogTable from "../../components/base/BlogTable/BlogTable";
 
     const columns = [
         {
@@ -29,20 +51,14 @@
             name: 'postDate',
             span: 3
         },
-        {
-            title: '操作',
-            name: 'status',
-            span: 4,
-            formatter: function (row, col) {
-                return '<a href="#">恢复</a> | <a href="#" onclick="remove(remove)">彻底删除</a>'
-            }
-        },
     ];
 
     export default {
         name: "AdminArticleAbandoned",
         components: {
-            BlogTable
+            BlogTable,
+            BlogTableTr: BlogTable.components.BlogTableTr,
+            BlogTableTd: BlogTable.components.BlogTableTd
         },
         data() {
             return {

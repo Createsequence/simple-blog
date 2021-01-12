@@ -60,7 +60,8 @@ export let generateFixedWindow = () => {
     let windowHeight = $(window).height();
 
     // 浮动窗口的宽高与底边距
-    let footerHeight = contentHeight <= windowHeight ? 0 : $(foot).innerHeight(); // 主内容栏过小则无需上浮
+    let isMiniContent = contentHeight <= windowHeight;
+    let footerHeight = isMiniContent ? 0 : $(foot).innerHeight(); // 主内容栏过小则无需上浮
     let width = ($(content).width() - $(sideRight).width()) / (2 * 1.1);
     let height = windowHeight - (headHeight * 2) - footerHeight;
     $(sideLeft).css({'width': width, 'height': height, 'margin-top': -footerHeight});

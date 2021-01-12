@@ -1,13 +1,37 @@
 <template>
     <div class="admin-menus-list">
-        <blog-table :columns="columns"
-                    :data="categories"/>
+
+        <blog-table :data="categories">
+
+            <div slot="head">
+                <blog-table-tr>
+                    <blog-table-td v-for="c in columns" :span="c.span" :html="c.title" :align="c.align"/>
+
+                    <blog-table-td span="3" html="操作"/>
+                </blog-table-tr>
+            </div>
+
+            <div slot="body">
+                <blog-table-tr v-for="a in categories.data" >
+                    <blog-table-td v-for="c in columns" :span="c.span" :align="c.align">
+                        {{a[c.name]}}
+                    </blog-table-td>
+
+                    <blog-table-td span="3">
+                        <a href="#">编辑</a> |
+                        <a href="#">删除</a>
+                    </blog-table-td>
+                </blog-table-tr>
+            </div>
+
+        </blog-table>
+
     </div>
 </template>
 
 <script>
     import {categories} from "../../assets/js/FillData";
-    import BlogTable from "../../components/base/BlogTable";
+    import BlogTable from "../../components/base/BlogTable/BlogTable";
 
     const columns = [
         {
@@ -29,20 +53,14 @@
             name: 'createData',
             span: 3
         },
-        {
-            title: '操作',
-            name: '',
-            span: 4,
-            formatter: function (row, col) {
-                return '<a href="#">删除</a> | <a href="#" onclick="">合并</a>'
-            }
-        },
     ];
 
     export default {
         name: "AdminMenusList",
         components: {
-            BlogTable
+            BlogTable,
+            BlogTableTr: BlogTable.components.BlogTableTr,
+            BlogTableTd: BlogTable.components.BlogTableTd
         },
         data() {
             return {

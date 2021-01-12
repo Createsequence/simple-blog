@@ -3,17 +3,27 @@
     <div class="blog-table">
 
         <div class="blog-table-header">
-            <a-row class="blog-table-tr">
-                <a-col class="blog-table-td" v-for="col in columns" :md="{ span:col.span }" :class="getAlign(col.align)">
-                    {{col.title}}
-                </a-col>
-            </a-row>
+            <slot name="head">
+                <blog-table-tr>
+                    <blog-table-td v-for="col in columns"
+                                   v-if="col.display !== false"
+                                   :html="col.title"
+                                   :span="col.span"
+                                   :align="col.align" />
+                </blog-table-tr>
+            </slot>
         </div>
 
         <div class="blog-table-body">
-            <a-row class="blog-table-tr" v-for="row in (pagination ? data.data : data)">
-                <a-col class="blog-table-td" v-for="col in columns"  v-html="getData(row,col)" :md="{ span:col.span }" :class="getAlign(col.align)" />
-            </a-row>
+            <slot name="body">
+                <blog-table-tr v-for="row in data.data">
+                    <blog-table-td v-for="col in columns"
+                                   v-if="col.display !== false"
+                                   :html="getData(row,col)"
+                                   :span="col.span"
+                                   :align="col.align"/>
+                </blog-table-tr>
+            </slot>
         </div>
 
         <div class="blog-table-footer">
@@ -28,11 +38,24 @@
 </template>
 
 <script>
+    import BlogTableTr from "./BlogTableTr";
+    import BlogTableTd from "./BlogTableTd";
+
     export default {
         name: "BlogTable",
+        components: {
+            BlogTableTr,
+            BlogTableTd
+        },
         props: {
-            columns: Array,
-            data: Object | Array,
+            columns: {
+                type: Array,
+                default: () => []
+            },
+            data: {
+                type: Object,
+                default: () => {}
+            },
             pagination: {
                 type: Boolean,
                 default: true
@@ -41,7 +64,7 @@
         data() {
             return {
                 current: 1,
-                pageSize: 10,
+                pageSize: 10
             }
         },
         methods: {
@@ -54,7 +77,7 @@
                 if (!(col.name instanceof Array)) {
                     return row[col.name];
                 }
-                return row[col.name[0]]
+                return row[col.name[0]];
             },
             getAlign(align) {
                 if (align === 'right') {
@@ -67,6 +90,9 @@
                 this.current = pageNum;
                 this.pageSize = 10;
             },
+            click: function (id) {
+                console.log(id);
+            }
         }
     }
 </script>

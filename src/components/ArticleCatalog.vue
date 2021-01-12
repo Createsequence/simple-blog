@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import BlogAnchor from "./base/BlogAnchor";
+    import BlogAnchor from "./base/BlogAnchor/BlogAnchor";
 
     import {getCatalog} from "../assets/js/utils";
     import $ from 'jquery';

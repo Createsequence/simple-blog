@@ -123,8 +123,8 @@
         name: "AdminContent",
         data() {
             return {
-                categories: categories(),
-                tags: tags(),
+                categories: categories().data,
+                tags: tags().data,
                 article: {
                     title: '',
                     content: '',

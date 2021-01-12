@@ -67,8 +67,8 @@
 
 <script>
     import BlogContent from "../../components/base/BlogContent";
-    import BlogAnchor from "../../components/base/BlogAnchor";
-    import BlogAnchorItem from "../../components/base/BlogAnchorItem";
+    import BlogAnchor from "../../components/base/BlogAnchor/BlogAnchor";
+    import BlogAnchorItem from "../../components/base/BlogAnchor/BlogAnchorItem";
 
     // 文章菜单
     const articleMenus = [

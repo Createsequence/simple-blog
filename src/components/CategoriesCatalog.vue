@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import BlogAnchor from "./base/BlogAnchor";
+    import BlogAnchor from "./base/BlogAnchor/BlogAnchor";
 
     export default {
         name: "CategoriesCatalog",

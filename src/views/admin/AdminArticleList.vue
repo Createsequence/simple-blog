@@ -1,55 +1,68 @@
 <template>
     <div class="admin-article-list">
 
-        <blog-table :columns="columns"
-                    :data="articleList"/>
+        <blog-table :data="articleList">
+
+            <div slot="head">
+                <blog-table-tr>
+                    <blog-table-td v-for="c in columns" :span="c.span" :html="c.title" :align="c.align"/>
+
+                    <blog-table-td span="3" html="操作"/>
+                </blog-table-tr>
+            </div>
+
+            <div slot="body">
+                <blog-table-tr v-for="a in articleList.data" >
+                    <blog-table-td v-for="c in columns" :span="c.span" :align="c.align">
+                        {{a[c.name]}}
+                    </blog-table-td>
+
+                    <blog-table-td span="3">
+                        <a href="#">编辑</a> |
+                        <a href="#">删除</a>
+                    </blog-table-td>
+                </blog-table-tr>
+            </div>
+
+        </blog-table>
 
     </div>
 </template>
 
 <script>
     import {articleList} from "../../assets/js/FillData";
-    import BlogTable from "../../components/base/BlogTable";
+    import BlogTable from "../../components/base/BlogTable/BlogTable";
 
     const columns = [
         {
             title: '标题',
-            name: ['title', 'postDate'],
             span: 14,
+            name: 'title',
             align: 'left',
-            formatter: function (row, col) {
-                return '<a href="#">' + row.title + '</a>' + ' (' + row.postDate + ')';
-            }
         },
         {
             title: '阅读量',
+            span: 2,
             name: 'read',
-            span: 2
         },
         {
             title: '评论',
+            span: 2,
             name: 'comment',
-            span: 2
         },
         {
             title: '发布状态',
-            name: 'status',
-            span: 3
-        },
-        {
-            title: '操作',
-            name: 'status',
             span: 3,
-            formatter: function (row, col) {
-                return '<a href="#">编辑</a> | <a href="#">删除</a>'
-            }
+            name: 'status'
         },
     ];
 
     export default {
         name: "AdminArticleList",
         components: {
-            BlogTable
+            BlogTable,
+            BlogTableTr: BlogTable.components.BlogTableTr,
+            BlogTableTd: BlogTable.components.BlogTableTd
         },
         data() {
             return {

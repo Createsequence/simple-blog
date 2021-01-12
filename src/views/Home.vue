@@ -51,25 +51,6 @@
     import {config} from "../../config";
     import BlogMenu from "../components/base/BlogMenu";
 
-    const menus = [
-        {
-            name: '文章',
-            path: '/home/content'
-        },
-        {
-            name: '分类',
-            path: '/home/categories'
-        },
-        {
-            name: '归档',
-            path: '/home/archives'
-        },
-        {
-            name: '关于',
-            path: '/home/content'
-        }
-    ];
-
     export default {
         name: 'Home',
         components: {
@@ -78,7 +59,24 @@
         data() {
             return {
                 config: config,
-                menus: menus
+                menus: [
+                    {
+                        name: '文章',
+                        path: '/home/content'
+                    },
+                    {
+                        name: '分类',
+                        path: '/home/categories'
+                    },
+                    {
+                        name: '归档',
+                        path: '/home/archives'
+                    },
+                    {
+                        name: '关于',
+                        path: '/home/details?id=' + this.$config.content.about.contentId
+                    }
+                ]
             }
         }
     }

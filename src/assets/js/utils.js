@@ -6,8 +6,8 @@ import $ from "jquery";
  * @returns {Array}
  */
 export const getCatalog = () => {
+    //获取所有H3和H2标题
     let nodes = document.getElementById("post-content").childNodes;
-    //获取H3和H2标题
     let titleNodes = [];
     for (let i = 0; i < nodes.length; i++) {
         let node = nodes[i];
@@ -96,6 +96,9 @@ export let storage = {
     }
 };
 
+/**
+ * 常用方法工具类
+ */
 export let util = {
     isNull: function (val) {
         let type = typeof (val);

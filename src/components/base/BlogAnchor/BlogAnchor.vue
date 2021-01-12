@@ -1,5 +1,5 @@
 <template>
-    <!--锚点，允许传入一个格式为{id:'xx',name:'xx',childes:[]}的对象的数组，并且将click事件以参数形式传入。目前只支持两层-->
+    <!--锚点组件，允许传入一个格式为{id:'xx',name:'xx',childes:[]}的对象的数组，并且将click事件以参数形式传入。目前只支持两层-->
     <div class="blog-anchor">
         <div class="anchor-title">
             <slot name="title"></slot>

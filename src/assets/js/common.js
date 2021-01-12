@@ -63,7 +63,7 @@ let common = {
         changeArticleStatus(id, '0');
     },
 
-    // 物理删除
+    // 物理删除文章
     delete: function (id) {
         console.log("物理删除成功！")
     }

@@ -1,5 +1,5 @@
 <template>
-    <!--表格组件-->
+    <!--带分页的表格组件，可以直接传入数据渲染-->
     <div class="blog-table">
 
         <div class="blog-table-header">
@@ -27,10 +27,12 @@
         </div>
 
         <div class="blog-table-footer">
-            <a-pagination v-if="pagination" show-quick-jumper
-                          :total="data.total"
-                          :current="current"
-                          @change="changePage"/>
+            <slot name="footer">
+                <a-pagination v-if="pagination" show-quick-jumper
+                              :total="data.total"
+                              :current="current"
+                              @change="changePage"/>
+            </slot>
         </div>
 
     </div>

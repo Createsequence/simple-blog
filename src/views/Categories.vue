@@ -1,4 +1,5 @@
 <template>
+    <!--分类页面-->
     <div class="categories">
         <blog-content>
             <categories-catalog slot="left"
@@ -36,7 +37,7 @@
             }
         },
         methods: {
-            jump: function (id) {
+            jump(id) {
                 console.log("跳转到id为" + id + "的文章分类");
             }
         }

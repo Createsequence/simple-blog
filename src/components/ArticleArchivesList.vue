@@ -1,5 +1,5 @@
 <template>
-    <!--不带文章摘要和发布信息的文章列表组件，用于归档-->
+    <!--根据日期进行分组、不带文章摘要和发布信息的文章列表组件，用于归档-->
     <div class="article-archives-list">
         <div class="article-archives-item" v-for="posts in data.data">
             <!--时间分组-->
@@ -41,10 +41,10 @@
             }
         },
         methods: {
-            link: function (id) {
+            link(id) {
                 this.$common.linkToArticleDetails(id);
             },
-            changePage: function(pageNum) {
+            changePage(pageNum) {
                 this.current = pageNum;
                 this.pageSize = this.$config.content.pageSize;
             }

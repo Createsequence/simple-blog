@@ -1,4 +1,5 @@
 <template>
+    <!--分类管理页面-->
     <div class="admin-menus-list">
 
         <blog-table :data="categories">

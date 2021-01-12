@@ -1,4 +1,5 @@
 <template>
+    <!--搜索组件-->
     <div class="article-search">
         <div class="search-input" id="search-input">
             <a-input-search

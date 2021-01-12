@@ -53,7 +53,7 @@
         },
         methods: {
             // 截取摘要
-            abstract: function(post) {
+            abstract(post) {
                 let abstract = post.abstract;
                 if (!abstract) {
                     let abstractConfig = this.abstractConfig;
@@ -63,11 +63,11 @@
                 }
                 return abstract;
             },
-            changePage: function(pageNum) {
+            changePage(pageNum) {
                 this.current = pageNum;
                 this.pageSize = 10;
             },
-            link: function(id) {
+            link(id) {
                 this.$common.linkToArticleDetails(id);
             }
         }

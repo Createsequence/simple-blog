@@ -1,5 +1,5 @@
 <template>
-    <!--菜单-->
+    <!--菜单组件，在小屏幕会转为抽屉-->
     <div class="blog-menu">
 
         <a-row>
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+    // TODO 优化小屏的菜单显示效果
     export default {
         name: "BlogMenu",
         props: {

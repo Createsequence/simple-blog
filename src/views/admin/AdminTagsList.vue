@@ -1,4 +1,5 @@
 <template>
+    <!--标签管理页面-->
     <div class="admin-tags-list">
 
         <blog-table :data="tags">

@@ -1,4 +1,5 @@
 <template>
+    <!--文章详情页面-->
     <div id="details" class="details">
         <blog-content>
             <article-catalog slot="left"/>

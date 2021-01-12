@@ -1,4 +1,5 @@
 <template>
+    <!--文章编辑页面-->
     <div class="admin-article-edit">
 
         <a-input placeholder="请输入标题" size="large" v-model="article.title"/>

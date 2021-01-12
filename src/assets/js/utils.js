@@ -1,9 +1,9 @@
 import $ from "jquery";
-import {isEmptyObject} from "ant-design-vue/lib/vc-form/src/utils";
 
 /**
  * 构建目录
- * @returns {[]}
+ *
+ * @returns {Array}
  */
 export const getCatalog = () => {
     let nodes = document.getElementById("post-content").childNodes;
@@ -48,7 +48,8 @@ export const getCatalog = () => {
  * 设置固定位置的浮动侧边栏，用于BlogContent组件中
  */
 export let generateFixedWindow = () => {
-    let headHeight = 64; //默认顶部栏高度
+    //默认顶部栏高度
+    let headHeight = 64;
     // 默认返回顶部
     $(window).scrollTop(0);
 
@@ -59,10 +60,10 @@ export let generateFixedWindow = () => {
     let contentHeight = $(content).height();
     let windowHeight = $(window).height();
 
-    // 浮动窗口的宽高与底边距
+    // 设置浮动窗口的宽高与底边距
     let isMiniContent = contentHeight <= windowHeight;
-    let footerHeight = isMiniContent ? 0 : $(foot).innerHeight(); // 主内容栏过小则无需上浮
-    let width = ($(content).width() - $(sideRight).width()) / (2 * 1.1);
+    let footerHeight = isMiniContent ? 0 : $(foot).innerHeight(); // 若主内容栏过小则无需上浮
+    let width = ($(content).width() - $(sideRight).width()) / (2 * 1.1); // 宽度可以适当小点
     let height = windowHeight - (headHeight * 2) - footerHeight;
     $(sideLeft).css({'width': width, 'height': height, 'margin-top': -footerHeight});
 
@@ -71,16 +72,6 @@ export let generateFixedWindow = () => {
         gap: windowHeight - $(sideLeft).height(),
         wrapper: $('#app')
     });
-};
-
-/**
- * 路由跳转到文章详情页面
- */
-export let linkToArticle = (that, id) => {
-    that.$router.push({
-        path: '/home/details',
-        query: {id: id}
-    })
 };
 
 /**

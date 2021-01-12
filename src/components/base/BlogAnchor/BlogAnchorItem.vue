@@ -1,4 +1,5 @@
 <template>
+    <!--锚点节点组件-->
     <div class="anchor-item">
         <a :id="id" @click="click(clickValue)">
             <slot>{{text}}</slot>

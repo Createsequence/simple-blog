@@ -1,5 +1,5 @@
 <template>
-    <!--博客正文栏，布局由浮动的左侧栏和右侧栏组成，两侧栏以插件形式插入-->
+    <!--博客正文栏，布局由固定的浮动左侧栏和右侧栏组成-->
     <a-layout-content id="blog-content" class="blog-content">
         <a-row>
 

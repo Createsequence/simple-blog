@@ -1,4 +1,5 @@
 <template>
+    <!--文章列表页面-->
     <div id="content" class="content">
         <blog-content>
             <div slot="left">

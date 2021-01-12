@@ -1,4 +1,5 @@
 <template>
+    <!--草稿箱页面-->
     <div class="admin-article-draft">
 
         <blog-table :data="articleList">

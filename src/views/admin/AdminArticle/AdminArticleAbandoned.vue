@@ -1,4 +1,5 @@
 <template>
+    <!--回收站页面-->
     <div class="admin-article-abandoned">
 
         <blog-table :data="articleList">

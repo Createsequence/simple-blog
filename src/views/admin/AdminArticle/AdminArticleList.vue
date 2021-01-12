@@ -1,4 +1,5 @@
 <template>
+    <!--文章管理页面-->
     <div class="admin-article-list">
 
         <blog-table :data="articleList">

@@ -17,6 +17,10 @@ function changeArticleStatus(id, status) {
 
 
 let common = {
+    // 返回首页
+    linkToHome: function () {
+        router.push('/');
+    },
 
     // 跳转到文章详情
     linkToArticleDetails: function (articleId) {

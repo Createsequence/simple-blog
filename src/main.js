@@ -43,7 +43,8 @@ import {
   Select,
   Switch,
   notification,
-  popconfirm
+  popconfirm,
+  Result
 } from 'ant-design-vue';
 
 Vue.use(Button);
@@ -62,6 +63,7 @@ Vue.use(Radio);
 Vue.use(Select);
 Vue.use(Switch);
 Vue.use(popconfirm);
+Vue.use(Result);
 
 
 // ======================== 属性与插件配置 ==============================

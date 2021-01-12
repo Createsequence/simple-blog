@@ -35,8 +35,8 @@
 </template>
 
 <script>
-    import {articleList} from "../../assets/js/FillData";
-    import BlogTable from "../../components/base/BlogTable/BlogTable";
+    import {articleList} from "../../../assets/js/FillData";
+    import BlogTable from "../../../components/base/BlogTable/BlogTable";
 
     const columns = [
         {

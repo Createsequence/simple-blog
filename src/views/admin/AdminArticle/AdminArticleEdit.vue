@@ -87,9 +87,9 @@
 </template>
 
 <script>
-    import {config} from "../../../config";
-    import {categories, tags} from "../../assets/js/FillData";
-    import {storage} from "../../assets/js/utils";
+    import {config} from "../../../../config";
+    import {categories, tags} from "../../../assets/js/FillData";
+    import {storage} from "../../../assets/js/utils";
 
     // 编辑器设置
     const editorOption = {

@@ -59,22 +59,22 @@ const routes = [
             {
                 path: '/admin/articleList',
                 name: 'AdminArticleList',
-                component: () => import('../views/admin/AdminArticleList')
+                component: () => import('../views/admin/AdminArticle/AdminArticleList')
             },
             {
                 path: '/admin/articleEdit',
                 name: 'AdminArticleEdit',
-                component: () => import('../views/admin/AdminArticleEdit')
+                component: () => import('../views/admin/AdminArticle/AdminArticleEdit')
             },
             {
                 path: '/admin/articleDraft',
                 name: 'AdminArticleDraft',
-                component: () => import('../views/admin/AdminArticleDraft')
+                component: () => import('../views/admin/AdminArticle/AdminArticleDraft')
             },
             {
                 path: '/admin/articleAbandoned',
                 name: 'AdminArticleAbandoned',
-                component: () => import('../views/admin/AdminArticleAbandoned')
+                component: () => import('../views/admin/AdminArticle/AdminArticleAbandoned')
             },
             {
                 path: '/admin/categoriesList',
@@ -87,6 +87,25 @@ const routes = [
                 component: () => import('../views/admin/AdminTagsList')
             }
         ]
+    },
+    {
+      path: '*',
+      redirect: '/404'
+    },
+    {
+        path: '/404',
+        name: 'NotFound',
+        component: () => import('../views/result/NotFound')
+    },
+    {
+        path: '/403',
+        name: 'NotAuthorized',
+        component: () => import('../views/result/NotAuthorized')
+    },
+    {
+        path: '/500',
+        name: 'ServerError',
+        component: () => import('../views/result/ServerError')
     }
 ];
 
@@ -94,7 +113,7 @@ const router = new VueRouter({
     // mode: 'history',
     mode: 'hash',
     base: process.env.BASE_URL,
-    routes
+    routes,
 });
 
 export default router

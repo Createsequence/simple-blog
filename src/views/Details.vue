@@ -25,6 +25,9 @@
             return {
                 article: article
             }
+        },
+        mounted() {
+            console.log('请求的文章id为：' + this.$route.query.id);
         }
     }
 </script>

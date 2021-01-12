@@ -26,8 +26,6 @@
 </template>
 
 <script>
-    import {linkToArticle} from "../assets/js/utils";
-
     export default {
         name: "ArticleArchivesList",
         props: {
@@ -44,11 +42,11 @@
         },
         methods: {
             link: function (id) {
-                linkToArticle(this, id);
+                this.$common.linkToArticleDetails(id);
             },
             changePage: function(pageNum) {
                 this.current = pageNum;
-                this.pageSize = 10;
+                this.pageSize = this.$config.content.pageSize;
             }
         }
     }

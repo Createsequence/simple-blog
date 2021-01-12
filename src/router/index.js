@@ -77,9 +77,9 @@ const routes = [
                 component: () => import('../views/admin/AdminArticleAbandoned')
             },
             {
-                path: '/admin/menusList',
-                name: 'AdminMenusList',
-                component: () => import('../views/admin/AdminMenusList')
+                path: '/admin/categoriesList',
+                name: 'AdminCategoriesList',
+                component: () => import('../views/admin/AdminCategoriesList')
             },
             {
                 path: '/admin/tagsList',

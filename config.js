@@ -34,6 +34,7 @@ export const config = {
         about: {
             // 设置为关于的文章ID
             contentId: 0
-        }
+        },
+        pageSize: 10
     }
 };

@@ -1,5 +1,5 @@
 import marked from 'marked'
-import art from '../post/渲染样式测试文档.md'
+import art from '../document/渲染样式测试文档.md'
 
 const content = marked(art);
 

@@ -6,7 +6,6 @@
             <div slot="head">
                 <blog-table-tr>
                     <blog-table-td v-for="c in columns" :span="c.span" :html="c.title" :align="c.align"/>
-
                     <blog-table-td span="3" html="操作"/>
                 </blog-table-tr>
             </div>
@@ -14,7 +13,7 @@
             <div slot="body">
                 <blog-table-tr v-for="a in categories.data" >
                     <blog-table-td v-for="c in columns" :span="c.span" :align="c.align">
-                        {{a[c.name]}}
+                        <a href="javaScript:void(0)" @click="show(a.id)">{{a[c.name]}}</a>
                     </blog-table-td>
 
                     <blog-table-td span="3">
@@ -56,7 +55,7 @@
     ];
 
     export default {
-        name: "AdminMenusList",
+        name: "AdminCategoriesList",
         components: {
             BlogTable,
             BlogTableTr: BlogTable.components.BlogTableTr,
@@ -67,6 +66,11 @@
                 columns: columns,
                 categories: categories()
             };
+        },
+        methods: {
+            show(id) {
+                this.$common.linkToArticleListByCategories(id);
+            }
         }
     }
 </script>

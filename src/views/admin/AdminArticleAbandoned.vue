@@ -13,12 +13,19 @@
             <div slot="body">
                 <blog-table-tr v-for="a in articleList.data" >
                     <blog-table-td v-for="c in columns" :span="c.span" :align="c.align">
-                        {{a[c.name]}}
+                        <a href="javaScript:void(0)" @click="details(a.id)">{{a[c.name]}}</a>
                     </blog-table-td>
 
                     <blog-table-td span="3">
-                        <a href="#">恢复</a> |
-                        <a href="#">彻底删除</a>
+                        <a href="javaScript:void(0)" @click="recover(a.id)">恢复</a> |
+                        <a-popconfirm
+                                title="确认要彻底删除吗？删除后将不能恢复"
+                                ok-text="删除"
+                                cancel-text="取消"
+                                @confirm="()=>{ confirm(a.id) }"
+                        >
+                            <a href="javaScript:void(0)">彻底删除</a>
+                        </a-popconfirm>
                     </blog-table-td>
                 </blog-table-tr>
             </div>
@@ -65,7 +72,18 @@
                 columns: columns,
                 articleList: articleList()
             };
-        }
+        },
+        methods: {
+            details(id) {
+                this.$common.linkToArticleDetails(id);
+            },
+            recover(id) {
+                this.$noticeSuccess('已恢复至草稿箱！');
+            },
+            confirm(id) {
+                console.log("彻底删除！id: " + id);
+            },
+        },
     }
 </script>
 

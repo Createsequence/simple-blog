@@ -93,8 +93,8 @@
     // 分类菜单
     const categoriseMenus = [
         {
-            path: '/admin/menusList',
-            name: '菜单管理'
+            path: '/admin/categoriesList',
+            name: '分类管理'
         },
     ];
 

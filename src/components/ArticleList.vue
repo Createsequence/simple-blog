@@ -28,8 +28,6 @@
 </template>
 
 <script>
-    import {linkToArticle} from "../assets/js/utils";
-
     export default {
         name: "ArticleList",
         props: {
@@ -50,7 +48,7 @@
         data() {
             return {
                 current: 1,
-                pageSize: 10
+                pageSize: this.$config.content.pageSize
             }
         },
         methods: {
@@ -70,7 +68,7 @@
                 this.pageSize = 10;
             },
             link: function(id) {
-                linkToArticle(this, id);
+                this.$common.linkToArticleDetails(id);
             }
         }
     }

@@ -131,17 +131,13 @@
                     categories: [],
                     abstract: '',
                     status: '1'
-
                 },
                 editorOption: editorOption
             }
         },
         methods: {
             saveTemplate(content, render) {
-                this.$notification.success({
-                    message: '成功',
-                    description: '已保存至本地缓存',
-                });
+                this.$noticeSuccess('已保存至本地缓存');
                 storage.set('blog_template_article', content);
             },
             subAbstract() {
@@ -173,16 +169,14 @@
                     });
                     this.article.status = status;
                 }
-                console.log(this.article);
-                this.$notification.success({
-                    message: '成功',
-                    description: '提交成功！',
-                });
+                this.$noticeSuccess('提交成功');
                 // 提交后清空本地缓存
                 storage.remove('blog_template_article');
             }
         },
         mounted() {
+            console.log('请求的文章id为：' + this.$route.query.id);
+
             let content = storage.get('blog_template_article');
             if (content !== '' && this.article.content === '') {
                 this.article.content = content;

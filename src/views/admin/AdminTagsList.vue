@@ -12,14 +12,14 @@
             </div>
 
             <div slot="body">
-                <blog-table-tr v-for="a in tags.data" >
+                <blog-table-tr v-for="t in tags.data" >
                     <blog-table-td v-for="c in columns" :span="c.span" :align="c.align">
-                        {{a[c.name]}}
+                        <a href="javaScript:void(0)" @click="show(t.id)">{{t[c.name]}}</a>
                     </blog-table-td>
 
                     <blog-table-td span="3">
-                        <a href="#">编辑</a> |
-                        <a href="#">删除</a>
+                        <a href="javaScript:void(0)">编辑</a> |
+                        <a href="javaScript:void(0)">删除</a>
                     </blog-table-td>
                 </blog-table-tr>
             </div>
@@ -64,6 +64,11 @@
                 columns: columns,
                 tags: tags()
             };
+        },
+        methods: {
+            show(id) {
+                this.$common.linkToArticleListByTag(id);
+            },
         }
     }
 </script>

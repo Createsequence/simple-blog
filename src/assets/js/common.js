@@ -15,21 +15,38 @@ function changeArticleStatus(id, status) {
     console.log('改变了id为' + id + '的文章状态为 ' + status);
 }
 
+
 let common = {
 
     // 跳转到文章详情
-    linkToArticleDetails: function (id) {
+    linkToArticleDetails: function (articleId) {
         router.push({
             path: '/home/details',
-            query: {id: id}
+            query: {id: articleId}
         })
     },
 
     // 跳转到文章编辑
-    linkToArticleEdit: function (id) {
+    linkToArticleEdit: function (articleId) {
         router.push({
             path: '/admin/articleEdit',
-            query: {id: id}
+            query: {id: articleId}
+        })
+    },
+
+    // 根据标签跳转到文章管理列表
+    linkToArticleListByTag: function (tagId) {
+        router.push({
+            path: '/admin/articleList',
+            query: {tagId: tagId}
+        })
+    },
+
+    // 根据分类跳转到文章管理列表
+    linkToArticleListByCategories: function (categoriseId) {
+        router.push({
+            path: '/admin/articleList',
+            query: {categoriseId: categoriseId}
         })
     },
 
@@ -38,13 +55,13 @@ let common = {
         vue.$notification.success({
             message: '成功',
             description: '文章已移入回收站'
-        })
+        });
         changeArticleStatus(id, '0');
     },
 
     // 物理删除
     delete: function (id) {
-
+        console.log("物理删除成功！")
     }
 };
 

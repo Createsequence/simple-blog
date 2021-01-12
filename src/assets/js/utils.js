@@ -106,9 +106,23 @@ export let storage = {
 };
 
 export let util = {
-    // 判空
-    isEmpty: function (val) {
+    isNull: function (val) {
         let type = typeof (val);
-        return type !== 'undefined' || type.trim().length === 0;
+        return type === 'undefined' || val === null;
     },
+
+    isNotNull: function (val) {
+        return !this.isNull(val);
+
+    },
+
+    isEmpty: function (val) {
+        return this.isNull(val) ||
+            val.length === 0 ||
+            (typeof val === 'string' ? val.trim().length === 0 : false);
+    },
+
+    isNotEmpty: function (val) {
+        return !this.isEmpty(val);
+    }
 };

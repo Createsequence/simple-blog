@@ -16,7 +16,6 @@
 
 <script>
     import {articleList, categories} from "../assets/js/FillData";
-    import {config} from "../../config";
 
     import BlogContent from "../components/base/BlogContent";
     import CategoriesCatalog from "../components/CategoriesCatalog";
@@ -32,7 +31,7 @@
         data() {
             return {
                 categories: categories().data,
-                abstractConfig: config.content.abstract,
+                abstractConfig: this.$config.content.abstract,
                 articleList: articleList(),
             }
         },

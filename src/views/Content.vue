@@ -13,7 +13,6 @@
 </template>
 
 <script>
-    import {config} from "../../config";
     import {articleList} from "../assets/js/FillData";
     import BlogContent from "../components/base/BlogContent";
     import ArticleList from "../components/ArticleList";
@@ -30,8 +29,8 @@
         },
         data() {
             return {
-                info: config.info,
-                abstractConfig: config.content.abstract,
+                info: this.$config.info,
+                abstractConfig: this.$config.content.abstract,
                 articleList: articleList()
             }
         }

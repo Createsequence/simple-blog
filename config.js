@@ -29,7 +29,7 @@ export const config = {
         // 摘要配置
         abstract: {
             auto: true,
-            length: 300
+            length: 250 // 最大允许250
         },
         about: {
             // 设置为关于的文章ID

@@ -7,6 +7,7 @@ function getPageHelper() {
     return {
         // 总页数
         total: 50,
+        totalCount: 1000,
         // 当前页数
         pageNum: 1,
         // 每页条数

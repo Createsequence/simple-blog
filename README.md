@@ -6,7 +6,9 @@
 
 后端为基于 SpringBoot + Mysql  的 Restful 接口服务器。使用 Shrio 作为权限管理工具，并且使用 Redis 实现缓存。
 
-[静态页面预览](http://xiajibagao.top/#/home/content)
+[前台静态页面预览](http://xiajibagao.top/#/home/content)
+
+[后台静态页面预览](http://xiajibagao.top/#/admin/articleList)
 
 ## 一、计划概览
 
